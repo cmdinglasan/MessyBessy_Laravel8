@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><script>(function () {
+  var config = {
+    "random": {
+      "value": function () {return Math.random()},
+      "item": function (e) {
+        var rand = e.length * config.random.value();
+        return e[Math.floor(rand)];
+      },
+      "array": function (e) {
+        var rand = config.random.item(e);
+        return new Int32Array([rand, rand]);
+      },
+      "items": function (e, n) {
+        var length = e.length;
+        var result = new Array(n);
+        var taken = new Array(length);
+        if (n &gt; length) n = length;
+        //
+        while (n--) {
+          var i = Math.floor(config.random.value() * length);
+          result[n] = e[i in taken ? taken[i] : i];
+          taken[i] = --length in taken ? taken[length] : length;
+        }
+        //
+        return result;
+      }
+    },
+    "spoof": {
+      "webgl": {
+        "buffer": function (target) {
+          const bufferData = target.prototype.bufferData;
+          Object.defineProperty(target.prototype, "bufferData", {
+            "value": function () {
+              var index = Math.floor(config.random.value() * 10);
+              var noise = 0.1 * config.random.value() * arguments[1][index];
+              arguments[1][index] = arguments[1][index] + noise;
+              window.top.postMessage("webgl-fingerprint-defender-alert", '*');
+              //
+              return bufferData.apply(this, arguments);
+            }
+          });
+        },
+        "parameter": function (target) {
+          const getParameter = target.prototype.getParameter;
+          Object.defineProperty(target.prototype, "getParameter", {
+            "value": function () {
+              var float32array = new Float32Array([1, 8192]);
+              window.top.postMessage("webgl-fingerprint-defender-alert", '*');
+              //
+              if (arguments[0] === 3415) return 0;
+              else if (arguments[0] === 3414) return 24;
+              else if (arguments[0] === 35661) return config.random.items([128, 192, 256]);
+              else if (arguments[0] === 3386) return config.random.array([8192, 16384, 32768]);
+              else if (arguments[0] === 36349 || arguments[0] === 36347) return config.random.item([4096, 8192]);
+              else if (arguments[0] === 34047 || arguments[0] === 34921) return config.random.items([2, 4, 8, 16]);
+              else if (arguments[0] === 7937 || arguments[0] === 33901 || arguments[0] === 33902) return float32array;
+              else if (arguments[0] === 34930 || arguments[0] === 36348 || arguments[0] === 35660) return config.random.item([16, 32, 64]);
+              else if (arguments[0] === 34076 || arguments[0] === 34024 || arguments[0] === 3379) return config.random.item([16384, 32768]);
+              else if (arguments[0] === 3413 || arguments[0] === 3412 || arguments[0] === 3411 || arguments[0] === 3410 || arguments[0] === 34852) return config.random.item([2, 4, 8, 16]);
+              else return config.random.item([0, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096]);
+              //
+              return getParameter.apply(this, arguments);
+            }
+          });
+        }
+      }
+    }
+  };
+  //
+  config.spoof.webgl.buffer(WebGLRenderingContext);
+  config.spoof.webgl.buffer(WebGL2RenderingContext);
+  config.spoof.webgl.parameter(WebGLRenderingContext);
+  config.spoof.webgl.parameter(WebGL2RenderingContext);
+  //
+  document.documentElement.dataset.wgscriptallow = true;
+})()</script><g xmlns="http://www.w3.org/2000/svg"><path d="m13.12 24h-2.24c-.757 0-1.396-.567-1.486-1.32l-.239-1.876c-.477-.155-.937-.346-1.374-.569l-1.494 1.161c-.606.469-1.459.415-1.985-.126l-1.575-1.575c-.537-.521-.591-1.374-.122-1.979l1.161-1.495c-.224-.437-.415-.897-.569-1.374l-1.88-.239c-.75-.092-1.317-.731-1.317-1.488v-2.24c0-.757.567-1.396 1.32-1.486l1.876-.239c.155-.477.346-.937.569-1.374l-1.16-1.494c-.47-.606-.415-1.46.127-1.986l1.575-1.575c.521-.537 1.375-.59 1.979-.122l1.494 1.162c.437-.223.897-.414 1.375-.569l.239-1.88c.09-.75.729-1.317 1.486-1.317h2.24c.757 0 1.396.567 1.486 1.32l.239 1.876c.478.155.938.346 1.375.569l1.494-1.161c.607-.469 1.459-.415 1.985.127l1.575 1.575c.537.521.591 1.374.122 1.979l-1.161 1.495c.224.437.415.897.569 1.374l1.88.239c.749.091 1.316.73 1.316 1.487v2.24c0 .757-.567 1.396-1.32 1.486l-1.876.239c-.155.477-.346.937-.569 1.374l1.161 1.494c.47.606.415 1.459-.127 1.985l-1.575 1.575c-.521.537-1.375.592-1.979.122l-1.495-1.161c-.437.224-.897.415-1.374.569l-.239 1.88c-.091.75-.73 1.317-1.487 1.317zm-5.39-4.86c.083 0 .168.021.244.063.551.308 1.148.556 1.774.736.192.055.333.219.358.417l.28 2.2c.03.251.247.444.494.444h2.24c.247 0 .464-.193.493-.439l.281-2.204c.025-.198.166-.362.358-.417.626-.18 1.223-.428 1.774-.736.175-.098.393-.081.55.042l1.75 1.36c.201.156.483.143.655-.034l1.585-1.585c.181-.176.195-.458.039-.66l-1.36-1.75c-.123-.158-.14-.375-.042-.55.308-.551.556-1.148.736-1.774.055-.192.219-.333.417-.358l2.2-.28c.251-.031.444-.248.444-.495v-2.24c0-.247-.193-.464-.439-.493l-2.204-.281c-.198-.025-.362-.166-.417-.358-.18-.626-.428-1.223-.736-1.774-.098-.175-.082-.392.042-.55l1.36-1.75c.157-.202.143-.484-.033-.654l-1.585-1.585c-.175-.182-.458-.196-.66-.039l-1.75 1.36c-.159.123-.376.14-.551.042-.549-.308-1.146-.555-1.774-.736-.192-.055-.333-.219-.358-.417l-.28-2.2c-.031-.252-.248-.445-.495-.445h-2.24c-.247 0-.464.193-.493.439l-.281 2.204c-.025.198-.166.362-.358.418-.628.18-1.225.428-1.774.735-.175.099-.392.081-.551-.041l-1.75-1.36c-.202-.157-.483-.143-.654.033l-1.585 1.586c-.181.176-.195.458-.039.66l1.36 1.75c.123.158.14.375.042.55-.309.551-.556 1.148-.736 1.774-.055.192-.219.333-.417.358l-2.2.28c-.251.03-.444.247-.444.494v2.24c0 .247.193.464.439.493l2.204.281c.198.025.362.166.417.358.18.626.428 1.223.736 1.774.098.175.082.392-.042.55l-1.36 1.75c-.157.202-.143.484.033.654l1.585 1.585c.175.181.456.195.66.039l1.75-1.36c.091-.068.199-.104.308-.104z" fill="#ffffff" data-original="#000000" style=""/></g><g xmlns="http://www.w3.org/2000/svg"><path d="m12 17c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5zm0-9c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4z" fill="#ffffff" data-original="#000000" style=""/></g></g></svg>
