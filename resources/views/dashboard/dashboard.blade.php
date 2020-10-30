@@ -45,7 +45,7 @@
             <div class="dashboard-sidebar">
                 <div class="sidebar-header">
                     <div class="header">
-                        <a href="/home">
+                        <a href="/">
                             <div class="header-icon">
                                 <img src="{{ asset('img/icon.png') }}"/>
                             </div>
@@ -58,7 +58,7 @@
                 <div class="sidebar-body">
                     <div class="sidebar-item-group">
                         <div class="sidebar-item">
-                            <a class="nav-link item" href="{{ url('/dashboard/index') }}" id="link-dashboard">
+                            <a class="nav-link item" href="{{ url('/dashboard/') }}" id="link-dashboard">
                                 <i class="far fa-chart-line"></i>
                                 <span>Dashboard</span>
                             </a>

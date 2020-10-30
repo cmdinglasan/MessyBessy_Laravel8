@@ -25,6 +25,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
 Route::get('/transactions', function () {
     return view('shop.index');
 });
+Route::get('/transactions/search', function () {
+    return view('shop.search');
+})->name('product-search');
 
 /* Product Retrieval */
 

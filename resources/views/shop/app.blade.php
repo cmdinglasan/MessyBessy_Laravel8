@@ -42,6 +42,7 @@
 <body>
     <div id="app">
         @yield('content')
+        @livewireScripts
     </div>
 
 <script>
