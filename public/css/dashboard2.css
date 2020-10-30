@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800;900&display=swap');
 
 @charset "UTF-8";
+
+:root {
+	--messy-blue: #3FA4D5;
+}
+
 body {
     font-family: Montserrat, Arial, sans-serif;
     color: #141414;
@@ -15,95 +20,56 @@ body {
 	height: 100%;
     background: #fff;
     width: 80%;
-    max-width: 420px;
+    max-width: 120px;
     z-index: 5;
 }
 .sidebar-wrapper .dashboard-sidebar {
-	position: relative;
+	width: 100%;
 	height: 100%;
+	background: #fff;
+	border-right: 1px solid rgba(0,0,0,0.05);
 	overflow-y: auto;
 	overflow-x: hidden;
-    border-right: 1px solid rgba(0,0,0,0.05);
 }
 .dashboard-sidebar .sidebar-header {
-	position: relative;
+	padding: 20px;
 }
-.dashboard-sidebar .sidebar-header .header {
-	position: relative;
-	padding: 30px 40px;
-}
-.dashboard-sidebar .sidebar-header .header .header-icon {
-	height: 64px;
-	width: 64px;
-	display: inline-block;
-	vertical-align: top;
-	margin: 10px;
-	text-align: center;
-}
-.dashboard-sidebar .sidebar-header .header .header-icon img {
-	height: 100%;
-}
-.dashboard-sidebar .sidebar-header .header .header-title {
-	padding: 20px 10px;
-	display: inline-block;
-	font-family: 'Poppins', Montserrat, Arial, sans-serif;
-	font-size: 24px;
-	font-weight: bold;
-	color: #212121;
-	margin: 0 0 0 20px;
-}
-.dashboard-sidebar .sidebar-header .header .header-title span {
-	color: #3FA4D5;
-	font-weight: bold;
-	display: inline-block;
+.dashboard-sidebar .sidebar-header .header-title {
+	display: none;
 }
 .dashboard-sidebar .sidebar-body {
-	padding: 30px;
+	padding: 20px;
 }
-.dashboard-sidebar .sidebar-body .sidebar-item-group .sidebar-item {
+.dashboard-sidebar .sidebar-body .sidebar-group {
 	position: relative;
-	margin: 0 0 20px 0;
+	margin-bottom: 20px;
 }
-.dashboard-sidebar .sidebar-body .sidebar-item-group .sidebar-item .item {
-	display: block;
-	padding: 15px 30px;
-	border-radius: 50px;
-	color: #96A8CD;
-	transform: scale(1);
-	box-shadow: 2px 0px 17px -23px rgba(150,168,205,0.4);
-	transition: all .2s ease;
-	cursor: pointer;
-}
-.dashboard-sidebar .sidebar-body .sidebar-item-group .sidebar-item .item.router-link-exact-active {
-	background: #3FA4D5;
-	box-shadow: 2px 32px 17px -23px rgba(150,168,205,0.4);
-	transform: scale(1.03);
-}
-.dashboard-sidebar .sidebar-body .sidebar-item-group .sidebar-item .item i {
+.dashboard-sidebar .sidebar-body .sidebar-group .sidebar-group-title {
 	padding: 10px;
-	width: 30px;
-	height: 30px;
-	text-align: center;
-	display: inline-block;
-	margin: 0 30px 0 0;
-	font-size: 18px;
 }
-.dashboard-sidebar .sidebar-body .sidebar-item-group .sidebar-item .item.router-link-exact-active i {
-	color: #fff;
-	padding: 10px 15px;
-}
-.dashboard-sidebar .sidebar-body .sidebar-item-group .sidebar-item .item span {
-	margin: 0 20px 0 0;
-	display: inline-block;
+.dashboard-sidebar .sidebar-body .sidebar-group .sidebar-group-title h4 {
+	font-size: 12px;
 	font-weight: bold;
-	font-size: 16px;
-	vertical-align: top;
-	padding: 7px 0;
-	box-shadow: 0 0 0;
-	transition: all .2s ease;
+	color: #B0B0BA;
 }
-.dashboard-sidebar .sidebar-body .sidebar-item-group .sidebar-item .item.router-link-exact-active span {
+.dashboard-sidebar .sidebar-body .sidebar-group .sidebar-item .item {
+	padding: 15px 20px;
+	border-radius: 10px;
+	font-weight: bold;
+	margin-bottom: 10px;
+	color: rgba(0,0,0,0.5);
+}
+.dashboard-sidebar .sidebar-body .sidebar-item .item.active {
+	background: var(--messy-blue);
 	color: #fff;
+}
+.dashboard-sidebar .sidebar-body .sidebar-group .sidebar-item .item i {
+	width: 24px;
+	text-align: center;
+	margin-right: 10px;
+}
+.dashboard-sidebar .sidebar-body .sidebar-group .sidebar-item .item span {
+	display: none;
 }
 
 /* Dashboard Content - Products */
@@ -374,35 +340,15 @@ body {
 	animation: toastSlideIn 1s;
 }
 
-/* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) { 
+/* Small devices (landscape phones, 640px and up) */
+@media (min-width: 640px) { 
 
-	/* Dashboard */
+	/* Sidebar */
 	.sidebar-wrapper {
-		width: auto;
+		width: 120px;
 	}
-	.dashboard-sidebar .sidebar-header .header .header-icon {
-		width: calc(100% - 20px);
-	}
-	.dashboard-sidebar .sidebar-header .header .header-title {
+	.sidebar-wrapper .sidebar-item .item span {
 		display: none;
-	}
-	.dashboard-sidebar .sidebar-body .sidebar-item-group .sidebar-item .item {
-		text-align: center;
-	}
-	.dashboard-sidebar .sidebar-body .sidebar-item-group .sidebar-item .item i {
-		margin: 0 5px 0 0;
-	}
-
-	.dashboard-sidebar .sidebar-body .sidebar-item-group .sidebar-item .item span {
-		opacity: 0;
-		visibility: hidden;
-		width: 0;
-		margin: 0;
-	}
-	.main-content .dashboard-content {
-		width: calc(100% - 129px);
-		margin: 0 0 0 129px;
 	}
 
 }
@@ -410,43 +356,41 @@ body {
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) { 
 
-}
-
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) { 
-
-	/* Dashboard */
+	/* Sidebar */
 	.sidebar-wrapper {
-		width: 420px;
+		position: fixed;
+	    width: 80%;
+	    max-width: 320px;
+	    z-index: 5;
 	}
-	.dashboard-sidebar .sidebar-header .header .header-icon {
+	.dashboard-sidebar .sidebar-header .header-icon {
+		height: 50px;
 		width: 50px;
+		display: inline-block;
+		vertical-align: top;
 	}
-	.dashboard-sidebar .sidebar-header .header .header-title {
+	.dashboard-sidebar .sidebar-header .header-icon img {
+		height: 100%;
+	}
+	.dashboard-sidebar .sidebar-header .header-title {
 		display: inline-block;
 	}
-	.dashboard-sidebar .sidebar-body .sidebar-item-group .sidebar-item .item {
-		text-align: left;
+	.dashboard-sidebar .sidebar-body .sidebar-group .sidebar-group-title {
+		padding: 10px 20px;
 	}
-	.dashboard-sidebar .sidebar-body .sidebar-item-group .sidebar-item .item i {
-		margin: 0 30px 0 0;
-	}
-
-	.dashboard-sidebar .sidebar-body .sidebar-item-group .sidebar-item .item span {
-		opacity: 1;
-		visibility: visible;
-		width: auto;
-	}
-	.main-content .dashboard-content {
-		width: calc(100% - 420px);
-		margin: 0 0 0 420px;
+	.dashboard-sidebar .sidebar-body .sidebar-group .sidebar-item .item span {
+		display: inline-block;
 	}
 
 }
 
-/* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) { 
+/* Large devices (desktops, 1024px and up) */
+@media (min-width: 1024px) { 
 
+	
+}
 
+/* Extra large devices (large desktops, 1280px and up) */
+@media (min-width: 1280px) { 
 
 }

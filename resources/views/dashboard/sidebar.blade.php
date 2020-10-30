@@ -2,26 +2,28 @@
     <div class="dashboard-sidebar">
         <div class="sidebar-header">
             <div class="header">
-                <a href="/home">
+                <a href="{{ route('home') }}">
                     <div class="header-icon">
-                        <img src="img/icon.png"/>
+                        <img src="{{ asset('img/icon.png') }}"/>
                     </div>
                     <div class="header-title">
-                        <span>EasyBessy</span>
+                        Easy<span>Bessy</span>
                     </div>
                 </a>
             </div>
         </div>
         <div class="sidebar-body">
-            <div class="sidebar-item-group">
+            <div class="sidebar-group">
+                <div class="sidebar-group-title mb-2">
+                    <h4>Admin</h4>
+                </div>
+
                 <div class="sidebar-item">
-                    <a class="nav-link item active" href="{{ url('/dashboard') }}" id="link-dashboard">
+                    <a class="nav-link item active" href="{{ url('/dashboard/') }}" id="link-dashboard">
                         <i class="far fa-chart-line"></i>
                         <span>Dashboard</span>
                     </a>
                 </div>
-            </div>
-            <div class="sidebar-item-group">
                 <div class="sidebar-item">
                     <a class="nav-link item" href="{{ url('/dashboard/products') }}" id="link-products">
                         <i class="far fa-shopping-bag"></i>
@@ -40,8 +42,18 @@
                         <span>Stocks</span>
                     </a>
                 </div>
-            </div>
-            <div class="sidebar-item-group">
+                <div class="sidebar-item">
+                    <a class="nav-link item" href="{{ url('/dashboard/branches') }}" id="link-employees">
+                        <i class="fas fa-store"></i>
+                        <span>Branches</span>
+                    </a>
+                </div>
+                <div class="sidebar-item">
+                    <a class="nav-link item" href="{{ url('/dashboard/employees') }}" id="link-employees">
+                        <i class="fas fa-user"></i>
+                        <span>Employees</span>
+                    </a>
+                </div>
                 <div class="sidebar-item">
                     <a class="nav-link item" href="{{ url('/dashboard/settings') }}" id="link-settings">
                         <i class="fas fa-cogs"></i>
@@ -49,7 +61,39 @@
                     </a>
                 </div>
             </div>
+
+            <div class="sidebar-group">
+                <div class="sidebar-group-title mb-2">
+                    <h4>Insights</h4>
+                </div>
+
+                <div class="sidebar-item">
+                    <a class="nav-link item" href="{{ url('/dashboard/') }}" id="link-dashboard">
+                        <i class="fas fa-envelope"></i>
+                        <span>Messages</span>
+                    </a>
+                </div>
+                <div class="sidebar-item">
+                    <a class="nav-link item" href="{{ url('/dashboard/') }}" id="link-dashboard">
+                        <i class="fas fa-bell"></i>
+                        <span>Alerts</span>
+                    </a>
+                </div>
+            </div>   
+
+            <div class="sidebar-group">
+                <div class="sidebar-group-title mb-2">
+                    <h4>Account</h4>
+                </div>
+
+                <div class="sidebar-item">
+                    <a class="nav-link item" href="{{ route('logout') }}" id="link-logout">
+                        <i class="fas fa-sign-out"></i>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </div>   
         </div>
-    </div>      
+    </div>     
 </div>
 

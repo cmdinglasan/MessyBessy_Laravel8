@@ -13,7 +13,7 @@
 							<i class="far fa-qrcode"></i>
 						</a>
 						<a href="{{ route('product-search') }}" type="button" class="btn search-btn" title="Search for Products">
-							<i class="fas fa-search"></i>
+							<i class="far fa-search"></i>
 						</a>
 					</div>
 				</div>
@@ -21,7 +21,15 @@
 		</div>
 		<div class="shop-greetings">
 			<div class="container">
-				<h2>Good morning, <br/>{{ $this->user['name'] }}</h2>
+				<h2>
+					@if($time < 12)
+						Good morning
+					@elseif(($time > 12) && ($time < 18))
+						Good afternoon
+					@else
+						Good evening
+					@endif
+					<br/>{{ $this->user['name'] }}</h2>
 			</div>
 		</div>
 	</div>

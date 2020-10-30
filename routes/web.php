@@ -18,23 +18,23 @@ use App\Http\Livewire\ShopApp;
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
     return view('welcome');
-})->name('auth.login');
+})->name('home');
 
 
 /* Go to Transactions */
-Route::get('/transactions', function () {
-    return view('shop.index');
-});
-Route::get('/transactions/search', function () {
-    return view('shop.search');
-})->name('product-search');
+
+/* Shop links with Authentication */
+Route::view('/shop', 'shop.index')->middleware(['auth:sanctum', 'verified']);
+Route::view('/shop/cart', 'shop.cart')->middleware(['auth:sanctum', 'verified'])->name('product-search');
+Route::view('/shop/search', 'shop.search')->middleware(['auth:sanctum', 'verified'])->name('product-search');
+
+
+Route::view('/account', 'dashboard')->middleware(['auth:sanctum', 'verified'])->name('dashboard');
+Route::view('/dashboard', 'dashboard.main')->middleware(['auth:sanctum', 'verified']);
 
 /* Product Retrieval */
 
 /* Authentication -> Go to Dashboard if authenticated */
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
 
 Route::resource('/dashboard/products', ProductController::class);
 Route::resource('/dashboard/categories', ProductCategoryController::class);

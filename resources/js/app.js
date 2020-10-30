@@ -1,8 +1,25 @@
 require('./bootstrap');
 
-import Vue from 'vue'
-import 'livewire-vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import router from './routes';
+import 'livewire-vue';
 
 window.Vue = Vue;
 
-Vue.component('transaction-home', require('component/transaction/index.vue') default);
+/* Shop */
+Vue.component('shop-home', require('./components/shop/index.vue') default);
+Vue.component('shop-cart', require('./components/shop/cart.vue') default);
+Vue.component('shop-alerts', require('./components/shop/alerts.vue') default);
+Vue.component('shop-profile', require('./components/shop/profile.vue') default);
+
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
+ 
+const app = new Vue({
+    el: '#app',
+    router
+});
