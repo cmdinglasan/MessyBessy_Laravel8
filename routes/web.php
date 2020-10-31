@@ -23,19 +23,25 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
 
 /* Go to Transactions */
 
+
+Route::group(['middleware' => 'auth:sanctum', 'verified'], function () {
+
 /* Shop links with Authentication */
-Route::view('/shop', 'shop.index')->middleware(['auth:sanctum', 'verified']);
-Route::view('/shop/cart', 'shop.cart')->middleware(['auth:sanctum', 'verified'])->name('product-search');
-Route::view('/shop/search', 'shop.search')->middleware(['auth:sanctum', 'verified'])->name('product-search');
+Route::view('/shop', 'shop.index');
+Route::view('/shop/cart', 'shop.cart')->name('product-search');
+Route::view('/shop/search', 'shop.search')->name('product-search');
 
 /* Dashboard - Products */
-Route::view('/dashboard/products', 'dashboard.inventory.products.index')->middleware(['auth:sanctum', 'verified'])->name('dashboard-product-index');
-Route::view('/dashboard/categories', 'dashboard.inventory.categories.index')->middleware(['auth:sanctum', 'verified'])->name('dashboard-categories-index');
-Route::view('/dashboard/stocks', 'livewire.dashboard.inventory.categories.index')->middleware(['auth:sanctum', 'verified'])->name('dashboard-stocks-index');
+Route::view('/dashboard/products', 'dashboard.inventory.products.index')->name('dashboard-product-index');
+Route::view('/dashboard/categories', 'dashboard.inventory.categories.index')->name('dashboard-categories-index');
+Route::view('/dashboard/stocks', 'dashboard.inventory.stocks.index')->name('dashboard-stocks-index');
+
+Route::view('/account', 'dashboard')->name('dashboard');
+Route::view('/dashboard', 'dashboard.main');
+
+});
 
 
-Route::view('/account', 'dashboard')->middleware(['auth:sanctum', 'verified'])->name('dashboard');
-Route::view('/dashboard', 'dashboard.main')->middleware(['auth:sanctum', 'verified']);
 
 /* Product Retrieval */
 

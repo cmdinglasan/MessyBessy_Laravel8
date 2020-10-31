@@ -58,7 +58,11 @@
 			      	<img src="{{ asset('img/products/'.$product['image']) }}" class="w-8"/>
 			      </td>
 			      <td class="border p-4 border-0">{{ $product['name'] }}</td>
-			      <td class="border p-4 border-0">{{ $product['product_category_id'] }}</td>
+			      @foreach($categories as $category)
+			      	@if($product['product_category_id']==$category['id'])
+			      		<td class="border p-4 border-0">{{ $category['name'] }}</td>
+			      	@endif
+			      @endforeach
 			      <td class="border p-4 border-0">{{ $product['price'] }}</td>
 			    </tr>
 		    @endforeach

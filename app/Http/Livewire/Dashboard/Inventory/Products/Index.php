@@ -10,7 +10,7 @@ use App\Models\ProductCategory;
 class Index extends Component
 {
     use WithPagination;
-	public $products, $categories, $query;
+	public $products, $categories, $query, $results;
 
     protected $rules = [
         'searchText' => 'required|min:1',
@@ -36,6 +36,7 @@ class Index extends Component
     public function render()
     {
         $query = $this->query;
+        $this->categories = ProductCategory::all();
         return view('livewire.dashboard.inventory.products.index');
     }
 }
