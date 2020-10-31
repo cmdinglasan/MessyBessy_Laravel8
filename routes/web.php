@@ -28,6 +28,11 @@ Route::view('/shop', 'shop.index')->middleware(['auth:sanctum', 'verified']);
 Route::view('/shop/cart', 'shop.cart')->middleware(['auth:sanctum', 'verified'])->name('product-search');
 Route::view('/shop/search', 'shop.search')->middleware(['auth:sanctum', 'verified'])->name('product-search');
 
+/* Dashboard - Products */
+Route::view('/dashboard/products', 'dashboard.inventory.products.index')->middleware(['auth:sanctum', 'verified'])->name('dashboard-product-index');
+Route::view('/dashboard/categories', 'dashboard.inventory.categories.index')->middleware(['auth:sanctum', 'verified'])->name('dashboard-categories-index');
+Route::view('/dashboard/stocks', 'livewire.dashboard.inventory.categories.index')->middleware(['auth:sanctum', 'verified'])->name('dashboard-stocks-index');
+
 
 Route::view('/account', 'dashboard')->middleware(['auth:sanctum', 'verified'])->name('dashboard');
 Route::view('/dashboard', 'dashboard.main')->middleware(['auth:sanctum', 'verified']);
@@ -36,7 +41,5 @@ Route::view('/dashboard', 'dashboard.main')->middleware(['auth:sanctum', 'verifi
 
 /* Authentication -> Go to Dashboard if authenticated */
 
-Route::resource('/dashboard/products', ProductController::class);
-Route::resource('/dashboard/categories', ProductCategoryController::class);
 
 /* Livewire Routes */
