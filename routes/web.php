@@ -35,7 +35,10 @@ Route::view('/shop/search', 'shop.search')->name('product-search');
 Route::view('/dashboard/products', 'dashboard.inventory.products.index')->name('dashboard-product-index');
 Route::view('/dashboard/categories', 'dashboard.inventory.categories.index')->name('dashboard-categories-index');
 Route::view('/dashboard/stocks', 'dashboard.inventory.stocks.index')->name('dashboard-stocks-index');
-
+Route::view('/dashboard/stocks/show', 'dashboard.inventory.stocks.show')->name('dashboard-stocks-show');
+Route::get('./dashboard/stocks/show?{$branchId}', function() {
+    return view('dashboard.inventory.stocks.show');
+});
 Route::view('/account', 'dashboard')->name('dashboard');
 Route::view('/dashboard', 'dashboard.main');
 
