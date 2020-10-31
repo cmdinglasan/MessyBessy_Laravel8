@@ -35,6 +35,8 @@ Route::view('/shop/search', 'shop.search')->name('product-search');
 Route::view('/dashboard/products', 'dashboard.inventory.products.index')->name('dashboard-product-index');
 Route::view('/dashboard/categories', 'dashboard.inventory.categories.index')->name('dashboard-categories-index');
 Route::view('/dashboard/stocks', 'dashboard.inventory.stocks.index')->name('dashboard-stocks-index');
+Route::view('/dashboard/branches', 'dashboard.branches.index')->name('dashboard-branches-index');
+Route::view('/dashboard/employees', 'dashboard.employees.index')->name('dashboard-employees-index');
 
 Route::view('/account', 'dashboard')->name('dashboard');
 Route::view('/dashboard', 'dashboard.main');
