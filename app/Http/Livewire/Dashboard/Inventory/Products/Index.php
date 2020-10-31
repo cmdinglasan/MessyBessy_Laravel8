@@ -11,11 +11,40 @@ class Index extends Component
 {
     use WithPagination;
 	public $products, $categories, $query, $results;
+    public $name, $description, $product_category_id, $price, $stock_qty, $min_stock;
 
     protected $rules = [
         'searchText' => 'required|min:1',
         'categories'=> 'nullable',
     ];
+
+    public function resetInputFields()
+    {
+        $this->name = '';
+        $this->description = '';
+        $this->product_category_id = '';
+        $this->price = '';
+        $this->stock_qty = '';
+        $this->min_stock = '';
+    }
+
+    public function store()
+    {
+        $validation = $this->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'product_category_id' => 'required',
+            'price' => 'required',
+            'stock_qty' => 'required',
+            'min_stock' => 'required'
+        ]);
+
+        Product::save($validation);
+
+        $this->resetInputFields();
+
+        $this->emit('productStore');
+    }
 
     public function updatedQuery()
     {
