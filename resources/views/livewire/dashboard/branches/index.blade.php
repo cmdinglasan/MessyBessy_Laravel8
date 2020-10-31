@@ -38,7 +38,7 @@
 		      <th class="p-4 text-blue-500 uppercase">Street</th>
 		      <th class="p-4 text-blue-500 uppercase">City</th>
 		      <th class="p-4 text-blue-500 uppercase">Region</th>
-		      <th class="p-4 text-blue-500 uppercase">Post Code</th>3
+		      <th class="p-4 text-blue-500 uppercase">Post Code</th>
 		      <th class="p-4 text-blue-500 uppercase">Country</th>
 		      <th class="p-4 text-blue-500 uppercase">Contact Number</th>
 		      <th class="p-4 text-blue-500 uppercase">Operating Hours</th>
