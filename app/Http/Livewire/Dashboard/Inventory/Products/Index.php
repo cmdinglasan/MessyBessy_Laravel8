@@ -39,11 +39,11 @@ class Index extends Component
             'min_stock' => 'required'
         ]);
 
-        Product::create($validation);
+        Product::save($validation);
 
         $this->resetInputFields();
 
-        $this->emit('userStore');
+        $this->emit('productStore');
     }
 
     public function updatedQuery()

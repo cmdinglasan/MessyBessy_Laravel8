@@ -4,6 +4,8 @@ namespace App\Http\Livewire\Dashboard\Branches;
 
 use Livewire\Component;
 use App\Models\Branch;
+use Livewire\WithPagination;
+
 class Index extends Component
 {
 	public $branches, 
@@ -51,7 +53,7 @@ class Index extends Component
     		'branch_other_info' => 'nullable',
     	]);
 
-    	Branch::create($validateDate);
+    	Branch::save($validateDate);
 
     	session()->flash('message', 'Branch Successfully Added!');
 

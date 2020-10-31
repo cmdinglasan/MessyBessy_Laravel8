@@ -53,7 +53,7 @@
         </div>
     </div>
     <script>
-        window.live.on('userStore', () = {
+        window.live.on('productStore', () = {
             $('#addProduct').modal('hide');
         });
     </script>
