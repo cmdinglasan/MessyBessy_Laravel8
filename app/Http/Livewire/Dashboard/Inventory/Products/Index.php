@@ -10,8 +10,10 @@ use App\Models\ProductCategory;
 class Index extends Component
 {
     use WithPagination;
-	public $products, $categories, $query, $results;
-    public $name, $description, $product_category_id, $price, $stock_qty, $min_stock;
+	public $products, $categories, $results, $query;
+    public $name, $description, $product_category_id, $price, $stock_qty, $stock_defective, $data;
+    public $updateMode = false;
+    public $addForm = false;
 
     protected $rules = [
         'searchText' => 'required|min:1',
@@ -25,7 +27,17 @@ class Index extends Component
         $this->product_category_id = '';
         $this->price = '';
         $this->stock_qty = '';
-        $this->min_stock = '';
+        $this->stock_defective = '';
+    }
+
+    public function showAddForm()
+    {
+        $this->addForm = true;
+    }
+
+    public function hideAddForm()
+    {
+        $this->addForm = false;
     }
 
     public function store()
@@ -36,14 +48,19 @@ class Index extends Component
             'product_category_id' => 'required',
             'price' => 'required',
             'stock_qty' => 'required',
-            'min_stock' => 'required'
+            'stock_defective' => 'required'
         ]);
 
         Product::save($validation);
 
         $this->resetInputFields();
 
-        $this->emit('productStore');
+        //flash message
+        session()->flash('message', 'Product Added');
+
+        $this->addForm = false;
+
+        return redirect()->route('dashboard-product-index');
     }
 
     public function updatedQuery()

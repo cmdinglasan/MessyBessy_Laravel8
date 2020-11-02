@@ -37,7 +37,7 @@
 		  </thead>
 		  <tbody>
 
-		  @if(!empty($query))
+		@if(!empty($query))
 		  	@if(!empty($results))
 			  	@foreach($results as $result)
 				    <tr class="border-b border-gray-100 hover:bg-gray-100">
@@ -61,12 +61,18 @@
 			      <td class="border p-4 border-0">{{ $branch['branch_state'] }}</td>
 				  <td class="border p-4 border-0">0</td>
 				  <td class="border p-4 border-0">0</td>
-				  <td><a href="{{ route('dashboard-stocks-show', 'id='.$branch['id']) }}">View Stock Level</td>
+				  <td><a href="{{ route('dashboard-stocks-show', 'id='.$branch['id']) }}">View Stock Level
+						<button type="button" class="btn btn-primary ml-2 bg-blue-500 hover:bg-blue-600" wire:click="">
+							<i class="fas fa-pencil mr-1"></i>
+							<span>Edit</span>
+						</button>
+				  </td>
 			    </tr>
 		    @endforeach
 		@endif
 		  </tbody>
 		</table>
+
 	</div>
 </div>
 @endsection
