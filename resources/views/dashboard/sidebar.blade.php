@@ -90,7 +90,7 @@
                 </div>
 
                 <div class="sidebar-item">
-                    <a class="nav-link item" href="{{ route('logout') }}" id="link-logout">
+                    <a class="nav-link item" method="POST" href="{{ route('logout') }}" id="link-logout">
                         <i class="fas fa-sign-out"></i>
                         <span>Logout</span>
                     </a>

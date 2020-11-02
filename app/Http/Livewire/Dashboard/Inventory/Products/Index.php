@@ -51,7 +51,14 @@ class Index extends Component
             'stock_defective' => 'required'
         ]);
 
-        Product::save($validation);
+        Product::create([
+            'name' => $this->name,
+            'description' => $this->description,
+            'product_category_id' => $this->product_category_id,
+            'price' => $this->price,
+            'stock_qty' => $this->stock_qty,
+            'min_stock' => $this->min_stock,
+        ]);
 
         $this->resetInputFields();
 

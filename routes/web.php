@@ -31,6 +31,12 @@ Route::view('/shop', 'shop.index');
 Route::view('/shop/cart', 'shop.cart')->name('product-search');
 Route::view('/shop/search', 'shop.search')->name('product-search');
 
+//Dashboard - Employees
+Route::view('/dashboard/employees', 'dashboard.employees.index')->name('dashboard-employees-index');
+
+//Dashboard - Branchces
+Route::view('/dashboard/branches', 'dashboard.branches.index')->name('dashboard-branches-index');
+
 /* Dashboard - Products */
 Route::view('/dashboard/products', 'dashboard.inventory.products.index')->name('dashboard-product-index');
 Route::view('/dashboard/products/show', 'dashboard.inventory.products.show')->name('dashboard-product-show');
@@ -40,6 +46,7 @@ Route::view('/dashboard/stocks/show', 'dashboard.inventory.stocks.show')->name('
 Route::get('./dashboard/stocks/show?{$branchId}', function() {
     return view('dashboard.inventory.stocks.show');
 });
+Route::view('/dashboard/branches', 'dashboard.branches.index')->name('dashboard-branches-index');
 Route::view('/account', 'dashboard')->name('dashboard');
 Route::view('/dashboard', 'dashboard.main');
 

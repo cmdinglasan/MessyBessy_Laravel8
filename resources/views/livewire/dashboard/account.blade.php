@@ -19,7 +19,7 @@
 			<div class="dropdown-divider my-0"></div>
 
 			<a class="dropdown-item block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" href="#">Settings</a>
-			<a class="dropdown-item block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" href="{{ route('logout') }}">Logout</a>
+			<a class="dropdown-item block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" method="POST" href="{{ route('logout') }}">Logout</a>
 		</div>
 	</div>
 </div>
