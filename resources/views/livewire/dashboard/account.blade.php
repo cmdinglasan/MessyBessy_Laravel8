@@ -14,12 +14,12 @@
         </button>
 		<div class="dropdown-menu dropdown-menu-right absolute z-50 mt-2 w-48 rounded-md shadow-lg origin-top-right right-0 rounded-md shadow-xs py-2 bg-white border-0" aria-labelledby="dropdownMenuButton">
 			<h6 class="dropdown-header block px-4 py-2 text-xs text-gray-400">Manage Account</h6>
-			<a class="dropdown-item block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" href="#">Profile</a>
+			<a class="dropdown-item block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" href="{{ route('profile.show') }}">Profile</a>
 
 			<div class="dropdown-divider my-0"></div>
 
 			<a class="dropdown-item block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" href="#">Settings</a>
-			<a class="dropdown-item block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" href="{{ route('logout') }}">Logout</a>
+			<a class="dropdown-item block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" method="POST" href="{{ route('logout') }}">Logout</a>
 		</div>
 	</div>
 </div>
