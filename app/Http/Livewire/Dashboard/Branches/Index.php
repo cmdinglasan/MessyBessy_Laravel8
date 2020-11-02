@@ -53,7 +53,18 @@ class Index extends Component
     		'branch_other_info' => 'nullable',
     	]);
 
-    	Branch::save($validateDate);
+    	Branch::create([
+            'branch_name' => $this->branch_name,
+            'branch_street' => $this->branch_street,
+            'branch_city' => $this->branch_city,
+            'branch_state' => $this->branch_state,
+            'branch_post_code'=> $this->branch_post_code,
+            'branch_country' => $this->branch_country,
+            'branch_contact_number' => $this->branch_contact_number,
+            'branch_operating_hours' => $this->branch_operating_hours,
+            'branch_other_info' => $this->branch_other_info,
+
+        ]);  
 
     	session()->flash('message', 'Branch Successfully Added!');
 

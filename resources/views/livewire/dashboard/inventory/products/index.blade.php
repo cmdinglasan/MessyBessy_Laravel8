@@ -99,7 +99,7 @@
 		<div wire:ignore.self class="modal fade" id="addProduct" tabindex="-1" role="dialog" tabindex="-1" role="dialog" aria-labelledby="addProduct" aria-hidden="true">
 		  <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <form>
+                <form wire:click.prevent="store()">
                     @csrf
                     <div class="modal-header">
                         <h5 class="modal-title">Add Product</h5>

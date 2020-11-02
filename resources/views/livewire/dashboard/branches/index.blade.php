@@ -16,20 +16,18 @@
 	</div>
 </div>
 <div class="db-content">
+	
 	<div class="container">
-
+	@if($updateMode)
+		@include('dashboard.branches.update')
+	@else
+		@include('dashboard.branches.create')
+	@endif
 		<div class="">
 			<input type="text" class="form-input w-100" wire:model="query" placeholder="Search"/>
 		</div>
 
-		<div class="actions flex my-3 text-right relative h-6">
-			<div class="absolute top-0 right-0">
-				<button type="button" class="btn btn-primary ml-2 bg-blue-500 hover:bg-blue-600" data-toggle="modal" data-target="#addBranch">
-					<i class="fas fa-plus mr-1"></i>
-					<span>Add</span>
-				</button>
-			</div>
-		</div>
+		
 
 		<table class="table-auto sortable w-100">
 		  <thead class="sticky top-0">
@@ -86,63 +84,128 @@
 		  </tbody>
 		</table>
 
-		@if($updateMode)
-			@livewire('dashboard.branches.update')
+		<!--- @if($updateMode)
+		<div wire:ignore.self class="modal fade" id="updateBranch" tabindex="-1" role="dialog" tabindex="-1" role="dialog" aria-labelledby="updateBranch" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+				<form>
+				    <div class="form-group">
+				        <input type="hidden" wire:model="branch_name">
+				        <label for="exampleFormControlInput1">Branch Name</label>
+				        <input type="text" class="form-control" wire:model="branch_name" id="exampleFormControlInput1" placeholder="Enter Branch Name">
+				        @error('branch_name') <span class="text-danger">{{ $message }}</span>@enderror
+				    </div>
+				    <div class="form-group">
+				        <input type="hidden" wire:model="branch_street">
+				        <label for="exampleFormControlInput1">Street</label>
+				        <input type="text" class="form-control" wire:model="branch_street" id="exampleFormControlInput1" placeholder="Enter Street">
+				        @error('branch_street') <span class="text-danger">{{ $message }}</span>@enderror
+				    </div>
+				    <div class="form-group">
+				        <input type="hidden" wire:model="branch_city">
+				        <label for="exampleFormControlInput1">City</label>
+				        <input type="text" class="form-control" wire:model="branch_city" id="exampleFormControlInput1" placeholder="Enter Street">
+				        @error('branch_city') <span class="text-danger">{{ $message }}</span>@enderror
+				    </div>
+				    <div class="form-group">
+				        <input type="hidden" wire:model="branch_state">
+				        <label for="exampleFormControlInput1">Region</label>
+				        <input type="text" class="form-control" wire:model="branch_state" id="exampleFormControlInput1" placeholder="Region">
+				        @error('branch_state') <span class="text-danger">{{ $message }}</span>@enderror
+				    </div>
+				    <div class="form-group">
+				        <input type="hidden" wire:model="branch_post_code">
+				        <label for="exampleFormControlInput1">Post Code</label>
+				        <input type="text" class="form-control" wire:model="branch_post_code" id="exampleFormControlInput1" placeholder="State">
+				        @error('branch_post_code') <span class="text-danger">{{ $message }}</span>@enderror
+				    </div>
+				    <div class="form-group">
+				        <input type="hidden" wire:model="branch_country">
+				        <label for="exampleFormControlInput1">Country</label>
+				        <input type="text" class="form-control" wire:model="branch_country" id="exampleFormControlInput1" placeholder="Country">
+				        @error('branch_country') <span class="text-danger">{{ $message }}</span>@enderror
+				    </div>
+				    <div class="form-group">
+				        <input type="hidden" wire:model="branch_contact_number">
+				        <label for="exampleFormControlInput1">Contact Number</label>
+				        <input type="text" class="form-control" wire:model="branch_contact_number" id="exampleFormControlInput1" placeholder="Contact Number">
+				        @error('branch_contact_number') <span class="text-danger">{{ $message }}</span>@enderror
+				    </div>
+				    <div class="form-group">
+				        <input type="hidden" wire:model="branch_operating_hours">
+				        <label for="exampleFormControlInput1">Operating Hours</label>
+				        <input type="text" class="form-control" wire:model="branch_operating_hours" id="exampleFormControlInput1" placeholder="Operating Hours">
+				        @error('branch_operating_hours') <span class="text-danger">{{ $message }}</span>@enderror
+				    </div>
+				    <div class="form-group">
+				        <input type="hidden" wire:model="branch_other_info">
+				        <label for="exampleFormControlInput1">Other Info</label>
+				        <input type="text" class="form-control" wire:model="branch_other_info" id="exampleFormControlInput1" placeholder="Other Info">
+				        @error('branch_other_info') <span class="text-danger">{{ $message }}</span>@enderror
+				    </div>
+
+
+				    <button wire:click.prevent="update()" class="btn btn-dark">Update</button>
+				    <button wire:click.prevent="cancel()" class="btn btn-danger">Cancel</button>
+				</form>
+            </div>
+          </div>
+		</div>
 		@else
-			<div wire:ignore.self class="modal fade" id="addBranch" tabindex="-1" role="dialog" aria-labelledby="createBranch" aria-hidden="true">
+			<div wire:ignore.self class="modal fade" id="addBranch" tabindex="-1" role="dialog" aria-labelledby="addBranch" aria-hidden="true">
 			    <div class="modal-dialog modal-dialog-centered" role="document">
 			    	<div class="modal-content">
-				        <form>
-				            <div class="form-group">
-				                <label for="exampleFormControlInput1">Branch Name</label>
-				                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Branch Name" wire:model="branch_name">
-				                @error('branch_name') <span class="text-danger">{{ $message }}</span>@enderror
-				            </div>
-				            <div class="form-group">
-				                <label for="exampleFormControlInput1">Street</label>
-				                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Street" wire:model="branch_street">
-				                @error('branch_street') <span class="text-danger">{{ $message }}</span>@enderror
-				            </div>
-				            <div class="form-group">
-				                <label for="exampleFormControlInput1">City</label>
-				                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter City" wire:model="branch_city">
-				                @error('branch_city') <span class="text-danger">{{ $message }}</span>@enderror
-				            </div>
-				            <div class="form-group">
-				                <label for="exampleFormControlInput1">Region</label>
-				                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Region" wire:model="branch_state">
-				                @error('branch_state') <span class="text-danger">{{ $message }}</span>@enderror
-				            </div>
-				            <div class="form-group">
-				                <label for="exampleFormControlInput1">Post Code</label>
-				                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Post Code" wire:model="branch_post_code">
-				                @error('branch_post_code') <span class="text-danger">{{ $message }}</span>@enderror
-				            </div>
-				            <div class="form-group">
-				                <label for="exampleFormControlInput1">Country</label>
-				                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Country" wire:model="branch_country">
-				                @error('branch_country') <span class="text-danger">{{ $message }}</span>@enderror
-				            </div>
-				            <div class="form-group">
-				                <label for="exampleFormControlInput1">Contact Number</label>
-				                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Contact Number" wire:model="branch_contact_number">
-				                @error('branch_contact_number') <span class="text-danger">{{ $message }}</span>@enderror
-				            </div>
-				            <div class="form-group">
-				                <label for="exampleFormControlInput1">Operating Hours</label>
-				                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Operating Hours" wire:model="branch_operating_hours">
-				                @error('branch_operating_hours') <span class="text-danger">{{ $message }}</span>@enderror
-				            </div>
-				            <div class="form-group">
-				                <label for="exampleFormControlInput1">Other Info</label>
-				                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Other Info" wire:model="branch_other_info">
-				                @error('branch_other_info') <span class="text-danger">{{ $message }}</span>@enderror
-				            </div>
-				            <button wire:click.prevent="store()" class="btn btn-success">Save</button>
-				        </form>
+					<form>
+			            <div class="form-group">
+			                <label for="exampleFormControlInput1">Branch Name</label>
+			                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Branch Name" wire:model="branch_name">
+			                @error('branch_name') <span class="text-danger">{{ $message }}</span>@enderror
+			            </div>
+			            <div class="form-group">
+			                <label for="exampleFormControlInput1">Street</label>
+			                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Street" wire:model="branch_street">
+			                @error('branch_street') <span class="text-danger">{{ $message }}</span>@enderror
+			            </div>
+			            <div class="form-group">
+			                <label for="exampleFormControlInput1">City</label>
+			                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter City" wire:model="branch_city">
+			                @error('branch_city') <span class="text-danger">{{ $message }}</span>@enderror
+			            </div>
+			            <div class="form-group">
+			                <label for="exampleFormControlInput1">Region</label>
+			                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Region" wire:model="branch_state">
+			                @error('branch_state') <span class="text-danger">{{ $message }}</span>@enderror
+			            </div>
+			            <div class="form-group">
+			                <label for="exampleFormControlInput1">Post Code</label>
+			                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Post Code" wire:model="branch_post_code">
+			                @error('branch_post_code') <span class="text-danger">{{ $message }}</span>@enderror
+			            </div>
+			            <div class="form-group">
+			                <label for="exampleFormControlInput1">Country</label>
+			                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Country" wire:model="branch_country">
+			                @error('branch_country') <span class="text-danger">{{ $message }}</span>@enderror
+			            </div>
+			            <div class="form-group">
+			                <label for="exampleFormControlInput1">Contact Number</label>
+			                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Contact Number" wire:model="branch_contact_number">
+			                @error('branch_contact_number') <span class="text-danger">{{ $message }}</span>@enderror
+			            </div>
+			            <div class="form-group">
+			                <label for="exampleFormControlInput1">Operating Hours</label>
+			                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Operating Hours" wire:model="branch_operating_hours">
+			                @error('branch_operating_hours') <span class="text-danger">{{ $message }}</span>@enderror
+			            </div>
+			            <div class="form-group">
+			                <label for="exampleFormControlInput1">Other Info</label>
+			                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Other Info" wire:model="branch_other_info">
+			                @error('branch_other_info') <span class="text-danger">{{ $message }}</span>@enderror
+			            </div>
+			            <button wire:click.prevent="store()" class="btn btn-success">Save</button>
+			        </form>
 				    </div>
 			    </div>
 			</div>
-		@endif
+		@endif -->
 	</div>
 </div>

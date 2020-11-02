@@ -39,6 +39,7 @@ Route::view('/dashboard/stocks/show', 'dashboard.inventory.stocks.show')->name('
 Route::get('./dashboard/stocks/show?{$branchId}', function() {
     return view('dashboard.inventory.stocks.show');
 });
+Route::view('/dashboard/branches', 'dashboard.branches.index')->name('dashboard-branches-index');
 Route::view('/account', 'dashboard')->name('dashboard');
 Route::view('/dashboard', 'dashboard.main');
 
