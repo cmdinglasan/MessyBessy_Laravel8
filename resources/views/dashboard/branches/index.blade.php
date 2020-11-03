@@ -4,6 +4,5 @@
 
 		@livewire('dashboard.branches.index')
     
-    @livewireScripts
 
 @endsection
