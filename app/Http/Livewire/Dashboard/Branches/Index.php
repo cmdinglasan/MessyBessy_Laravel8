@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Livewire\Dashboard\Branches;
-
+//
 use Livewire\Component;
 use App\Models\Branch;
 use Livewire\WithPagination;
@@ -20,7 +20,7 @@ class Index extends Component
            $branch_operating_hours,
            $branch_other_info;
 
-    public $isOpen = 0;
+    public $isOpen = false;
 
   
 
@@ -81,7 +81,7 @@ class Index extends Component
 
     {
 
-        $this->isOpen = true;
+        $isOpen = true;
 
     }
 
@@ -101,7 +101,7 @@ class Index extends Component
 
     {
 
-        $this->isOpen = false;
+        $isOpen = false;
 
     }
 

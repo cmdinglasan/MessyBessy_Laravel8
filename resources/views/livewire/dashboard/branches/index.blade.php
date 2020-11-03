@@ -1,22 +1,16 @@
-<div class="db-card-header db-card-header-green">
-	<div class="container">
-		<div class="header-title">
-			Branches
-		</div>
-		<div class="header-subtitle">
-			Where are those branches at?
-		</div>
-		<div class="header-action">
-			<a href="#settings" class="btn header-btn">
-				Go to settings
-			</a>
-		</div>
-		<div class="header-image">
-		</div>
-	</div>
-</div>
-<div class="dashboard-content">
-	<div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+<x-slot name="header">
+
+    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+
+        Manage Branches
+
+    </h2>
+
+</x-slot>
+
+<div class="py-12">
+
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg px-4 py-4">
 
@@ -38,7 +32,7 @@
 
             @endif
 
-            <button wire:click="create()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-3">Create New Branch</button>
+            <button wire:click="create()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-3">Create New Post</button>
 
             @if($isOpen)
 
@@ -119,4 +113,5 @@
         </div>
 
     </div>
+
 </div>
