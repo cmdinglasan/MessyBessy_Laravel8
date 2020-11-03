@@ -11,7 +11,7 @@ use App\Models\ProductCategory;
 class Show extends Component
 {
     use WithFileUploads;
-	public $productId, $products, $alertLevel, $ind, $image;
+	public $productId, $products, $alertLevel, $ind, $image, $categories;
 	public $modalFormVisible = false;
 	public $modalDelete = false;
 	public $name, $price;
@@ -48,13 +48,14 @@ class Show extends Component
 	public function update()
 	{
 
-		$imageName = $this->image->store('img/products', 'public');
-		
+
 		$this->validate([
 			'name'	=> 'required',
 			'price' => 'required',
             'image' => 'image|max:1024',
 		]);
+
+		$imageName = $this->image->store('img/products', 'public');
 
 		if($this->productId) {
 
@@ -96,6 +97,7 @@ class Show extends Component
 	public function mount() 
 	{
 		$this->products = Product::where('id',$this->productId)->get()->toArray();
+		$this->categories = ProductCategory::get()->toArray();
 		$product = Product::find($this->productId);
 
 		if($product) {

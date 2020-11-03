@@ -16,7 +16,7 @@
 		@if($addForm == 1)
 		<div class="header-modal">
 			<div class="background" wire:click="hideAddForm()"></div>
-			<div class="container relative z-10 bg-white p-10 rounded shadow-2xl max-w-md">
+			<div class="container relative z-10 bg-white p-10 rounded shadow-2xl max-w-md" x-data="{ isUploading: false, progress: 0 }"x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false" x-on:livewire-upload-progress="progress = $event.detail.progress">
 				<div class="header-modal-title mb-3">
 					<h2 class="text-gray-700 text-2xl font-bold">Add Product</h2>
 				</div>
@@ -44,12 +44,18 @@
 
 						<input type="file" id="image" wire:model="image" class="form-control @error('image') is-invalid @enderror" hidden>
 						@if ($image)
-					        Photo Preview:
-					        <img src="{{ $image->temporaryUrl() }}" class="h-20 mb-3" alt="Product Image">
-					        <label for="image" class="btn btn-primary">Change Photo</label>
+							<div class="text-center">
+					        	<img src="{{ $image->temporaryUrl() }}" class="h-24 mb-3 inline-block" alt="Product Image" title="Product Image"><br/>
+					        	<label for="image" class="btn btn-primary">
+						        	<i class="fad fa-spinner-third animate-spin text-white text-sm mr-2" x-show="isUploading"></i>
+						        	<span>Change Photo</span>
+						        </label>
+						    </div>
 					    @else
 							<label for="image" class="uppercase font-bold text-xs text-gray-400 border-dashed border-2 rounded block mt-2 p-3 text-center cursor-pointer hover:bg-gray-100">
-								<i class="fas fa-file-upload block text-2xl mb-2"></i>
+								<div x-show="isUploading">
+									<i class="fad fa-spinner-third animate-spin text-2xl mb-2"></i>
+							    </div>
 								<span>Click to Upload Image</span>
 							</label>
 					    @endif
