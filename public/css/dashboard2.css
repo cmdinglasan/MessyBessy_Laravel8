@@ -39,7 +39,6 @@ body {
 	padding: 20px;
 }
 .dashboard-sidebar .sidebar-header .header-title {
-	display: none;
 }
 .dashboard-sidebar .sidebar-body {
 	padding: 20px;
@@ -74,6 +73,11 @@ body {
 }
 .dashboard-sidebar .sidebar-body .sidebar-group .sidebar-item .item span {
 	display: none;
+}
+
+/* Dashboard Content */
+.dashboard-content {
+	margin-top: 75px;
 }
 
 /* Dashboard Content - Products */
@@ -145,8 +149,12 @@ body {
 /* Dashboard Header */
 .db-header {
 	height: 75px;
-	position: relative;
+	position: fixed;
 	padding: 10px;
+	background: #fff;
+	width: calc(100% - 320px);
+	top: 0;
+	z-index: 3;
 }
 .db-header .container {
 	position: relative;
@@ -185,6 +193,62 @@ body {
 	padding: 10px 15px;
 	border-radius: 20px;
 	font-weight: bold;
+}
+.db-card-header .item-overview-nav {
+	position: relative;
+}
+.db-card-header .item-overview-nav .nav-tabs li {
+	padding: 0 15px;
+}
+.db-card-header .item-overview-nav .nav-tabs li:first-child {
+	padding: 0 15px 0 0;
+}
+.db-card-header .item-overview-nav .nav-tabs li a {
+	padding: 10px 0;
+	display: block;
+	font-weight: 600;
+	color: #a0aec0;
+	text-decoration: none;
+	border-bottom: 2px solid transparent;
+	transition: all .2s ease;
+}
+.db-card-header .item-overview-nav .nav-tabs li a.active {
+	color: #212121;
+	border-color: var(--messy-blue);
+}
+.db-card-header .header-modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 99;
+}
+.db-card-header .header-modal .container {
+	margin-top: 40px;
+	animation: showModal .5s;
+	overflow-y: auto;
+	max-height: calc(100% - 90px);
+}
+@keyframes showModal {
+
+	from {
+		margin-top: 70px;
+		opacity: 0;
+	}
+	to {
+		margin-top: 40px;
+		opacity: 1;
+	}
+
+}
+.db-card-header .header-modal .background {
+	content: '';
+	background: #000;
+	opacity: 0.3;
+	position: absolute;
+	height: 100%;
+	width: 100%;
 }
 
 /* Dashboard Content */
@@ -417,22 +481,8 @@ body {
 	    max-width: 320px;
 	    z-index: 5;
 	}
-	.dashboard-sidebar .sidebar-header .header-icon {
-		height: 62px;
-		width: 62px;
-		display: inline-block;
-		vertical-align: top;
-		margin-right: 10px;
-	}
 	.dashboard-sidebar .sidebar-header .header-icon img {
 		height: 100%;
-	}
-	.dashboard-sidebar .sidebar-header .header-title {
-		display: inline-block;
-		font-size: 24px;
-		font-weight: bold;
-		padding: 10px 0;
-		color: #212121;
 	}
 	.dashboard-sidebar .sidebar-header .header-title span {
 		color: var(--messy-blue);

@@ -49,12 +49,19 @@
             <div class="dashboard-content">
                 @livewire('dashboard.header')
                 @yield('content')
+                @livewireScripts
             </div>
         </div>
     </div>
     <script>
-        window.live.on('productStore', () = {
-            $('#addProduct').modal('hide');
+        window.Laravel = <?php echo json_encode([
+            'csrfToken' => csrf_token(),
+        ]); ?>
+        windows.addEventListener('openDeleteModal', event = {
+            $('#deleteProduct').modal('show');
+        });
+        windows.addEventListener('closeDeleteModal', event = {
+            $('#deleteProduct').modal('hide');
         });
     </script>
 
