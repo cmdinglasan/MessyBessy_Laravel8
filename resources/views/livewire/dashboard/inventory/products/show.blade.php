@@ -18,7 +18,7 @@
 			</button>
 		</div -->
 		<div class="header-image absolute top-0 right-0">
-			<img src="{{ asset('img/products/'.$product['image']) }}"/>
+			<img src="{{ asset('storage/'.$product['image']) }}"/>
 		</div>
 		@if($modalFormVisible == 1)
 		<div class="header-modal">
@@ -41,6 +41,24 @@
 						<label for="price" class="uppercase font-bold text-xs text-gray-400">Price</label>
 						<input type="text" wire:model="price" class="form-control @error('price') is-invalid @enderror" placeholder="{{ old($product['price']) }}">
 			            @error('price')
+			                <span class="invalid-feedback">
+			                        {{ $message }}
+			                 </span>
+			            @enderror
+			        </div>
+					<div class="form-group">
+						<span class="uppercase font-bold text-xs text-gray-400">Image</span><br/>
+
+						<input type="file" id="image" wire:model="image" class="form-control @error('image') is-invalid @enderror" hidden>
+
+						@if ($image)
+							<img src="{{ $image->temporaryUrl() }}" class="h-20 mb-3" alt="Product Image">
+						@elseif ($product['image'])
+					    	<img src="{{ asset('storage/'.$product['image']) }}" class="h-20 mb-3" alt="Product Image">
+					    @endif
+					    <label for="image" class="btn btn-primary">Change Photo</label>
+
+			            @error('image')
 			                <span class="invalid-feedback">
 			                        {{ $message }}
 			                 </span>

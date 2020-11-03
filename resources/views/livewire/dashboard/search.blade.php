@@ -1,12 +1,12 @@
 <div class="search-pane-content">
-	<div class="search-box">
+	<div class="search-box" x-data="{ isOpen: true }" @click.away="isOpen = false">
 		<div class="container">
 			<i class="fas fa-search mr-3"></i>
 			<input type="text" class="h-14 w-3/4 outline-none" wire:model="query" placeholder="Search here">
 		</div>
 	</div>
 	@if(!empty($query))
-		<div class="search-results absolute top-18 left-0 w-full bg-white p-4 z-10 border-b-2 border-gray-100">
+		<div class="search-results absolute top-18 left-0 w-full bg-white p-4 z-10 border-b-2 border-gray-100" x-show="isOpen">
 			<h3 class="results-title font-bold mb-3">
 				Results
 			</h3>

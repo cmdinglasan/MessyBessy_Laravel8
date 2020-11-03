@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Dashboard\Inventory\Products;
 
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 use App\Models\Product;
 use App\Models\ProductCategory;
@@ -10,8 +11,9 @@ use App\Models\ProductCategory;
 class Index extends Component
 {
     use WithPagination;
+    use WithFileUploads;
 	public $products, $categories, $results, $query;
-    public $name, $description, $product_category_id, $price, $stock_qty, $stock_defective, $data;
+    public $name, $description, $product_category_id, $price, $stock_qty, $stock_defective, $data, $min_stock, $category, $image;
     public $updateMode = false;
     public $addForm = false;
 
@@ -25,6 +27,7 @@ class Index extends Component
         $this->name = '';
         $this->description = '';
         $this->product_category_id = '';
+        $this->image = '';
         $this->price = '';
         $this->stock_qty = '';
         $this->stock_defective = '';
@@ -33,6 +36,8 @@ class Index extends Component
     public function showAddForm()
     {
         $this->addForm = true;
+
+        $this->resetInputFields();
     }
 
     public function hideAddForm()
@@ -40,18 +45,45 @@ class Index extends Component
         $this->addForm = false;
     }
 
+    public function updatedImage()
+    {
+        $this->validate([
+            'image' => 'image|max:1024',
+        ]);
+    }
+
+    public function removeTempImage()
+    {
+        $image = '';
+    }
+
     public function store()
     {
-        $validation = $this->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'product_category_id' => 'required',
-            'price' => 'required',
-            'stock_qty' => 'required',
-            'stock_defective' => 'required'
-        ]);
 
-        Product::create([
+        $imageName = $this->image->store('img/products', 'public');
+
+        $product = new Product;
+        $product->name = $this->name;
+        $product->description = $this->description;
+        $product->image = $imageName;
+        $product->product_category_id = $this->category;
+        $product->price = $this->price;
+        $product->stock = $this->stock_qty;
+        $product->stock_defective = $this->min_stock;
+
+
+        $product->save();
+
+        //flash message
+        session()->flash('message', 'Product Added');
+
+        $this->addForm = false;
+
+        return redirect()->route('dashboard-product-index');
+
+        /*
+
+        Product::save([
             'name' => $this->name,
             'description' => $this->description,
             'product_category_id' => $this->product_category_id,
@@ -67,7 +99,7 @@ class Index extends Component
 
         $this->addForm = false;
 
-        return redirect()->route('dashboard-product-index');
+        return redirect()->route('dashboard-product-index'); */
     }
 
     public function updatedQuery()
@@ -84,6 +116,7 @@ class Index extends Component
         $this->products = Product::orderBy('name','asc')
             ->get()
             ->toArray();
+        $this->category = 1;
     }
 
     public function render()

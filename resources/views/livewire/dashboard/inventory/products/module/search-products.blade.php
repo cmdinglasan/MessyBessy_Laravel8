@@ -36,8 +36,6 @@
 </div>
 @endif
 
-
-
 	<div class="">
 		<input type="text" class="form-input w-100" wire:model="query" placeholder="Search"/>
 
@@ -63,13 +61,19 @@
 				<tr class="result hover:bg-gray-100">
 					<td class="p-4">
 						<div class="product-photo h-8 w-8">
-							<img src="{{ asset('img/products/'.$result['image']) }}">
+                            @if(!empty($result['image']))
+							 <img src="{{ asset('storage/'.$result['image']) }}">
+                            @else
+                                <img src="https://via.placeholder.com/32x32.png"/>
+                            @endif
 						</div>
 					</td>
 					<td class="p-4">
 						<div class="product-info">
-							<h4>
-								<strong>{{ $result['name'] }}</strong>
+							<h4 class="font-bold">
+								<a href="{{ route('dashboard-product-show', 'productId='.$result['id']) }}">
+                                    <span>{{ $result['name'] }}</span>
+                                </a>
 							</h4>
 						</div>
 					</td>
@@ -101,26 +105,29 @@
 				@endforeach
 			@else
 				<tr>
-					<td>
-						<div class="result error">
+					<td colspan="5">
+						<div class="result error text-center">
 							<span class="error-text">No results found. Try searching again.</span>
 						</div>
 					</td>
 				</tr>
 			@endif
 		@else
+        @if(!empty($products))
 			@foreach($products as $product)
 				<tr class="result hover:bg-gray-100">
 					<td class="p-4">
 						<div class="product-photo h-8 w-8">
-							<img src="{{ asset('img/products/'.$product['image']) }}">
+							<img src="{{ asset('storage/'.$product['image']) }}">
 						</div>
 					</td>
 					<td class="p-4">
 						<div class="product-info">
-							<h4>
-								<strong>{{ $product['name'] }}</strong>
-							</h4>
+                            <h4 class="font-bold">
+                                <a href="{{ route('dashboard-product-show','productId='.$product['id']) }}">
+                                    <span>{{ $product['name'] }}</span>
+                                </a>
+                            </h4>
 						</div>
 					</td>
 					<td class="p-4">
@@ -149,6 +156,16 @@
 					</td>
 				</tr>
 			@endforeach
+        @else
+            <tr>
+                <td colspan="5">
+                    <div class="result error text-center m-3 text-gray-600">
+                        <i class="fas fa-exclamation-triangle text-2xl mb-2"></i><br/>
+                        <span class="error-text">Whoops! There are no products here. Add some.</span>
+                    </div>
+                </td>
+            </tr>
+        @endif
 		@endif
 	  </tbody>
 	</table>

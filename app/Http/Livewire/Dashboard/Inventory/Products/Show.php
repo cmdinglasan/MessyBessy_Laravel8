@@ -3,13 +3,15 @@
 namespace App\Http\Livewire\Dashboard\Inventory\Products;
 
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ProductCategory;
 
 class Show extends Component
 {
-	public $productId, $products, $alertLevel, $ind;
+    use WithFileUploads;
+	public $productId, $products, $alertLevel, $ind, $image;
 	public $modalFormVisible = false;
 	public $modalDelete = false;
 	public $name, $price;
@@ -36,11 +38,22 @@ class Show extends Component
 		$this->modalDelete = false;
 	}
 
+    public function updatedImage()
+    {
+        $this->validate([
+            'image' => 'image|max:1024',
+        ]);
+    }
+
 	public function update()
 	{
+
+		$imageName = $this->image->store('img/products', 'public');
+		
 		$this->validate([
 			'name'	=> 'required',
 			'price' => 'required',
+            'image' => 'image|max:1024',
 		]);
 
 		if($this->productId) {
@@ -49,8 +62,9 @@ class Show extends Component
             
             if($product) {
                 $product->update([
-                    'name'     => $this->name,
-                    'price'   => $this->price
+                    'name'    => $this->name,
+                    'price'   => $this->price,
+                    'image'	  => $imageName
                 ]);
             }
         }
