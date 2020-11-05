@@ -1,6 +1,5 @@
 <div>
 
-
 @if(isset($selectedItem))
 <div class="modal fade show id-{{ $selectedItem }}" id="deleteProduct" tabindex="-1" role="dialog" tabindex="-1" role="dialog" aria-labelledby="addProduct" aria-hidden="false">
   <div class="modal-dialog modal-dialog-centered" role="document">

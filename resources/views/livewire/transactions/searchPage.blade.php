@@ -25,7 +25,7 @@
 						@foreach($results as $result)
 						<div class="result">
 							<div class="product-photo">
-								<img src="{{ asset('img/products/'.$result['image']) }}">
+								<img src="{{ asset('storage/'.$result['image']) }}">
 							</div>
 							<div class="product-info">
 								<h4>{{ $result['name'] }}</h4>
@@ -50,7 +50,7 @@
 					@foreach($products as $product)
 						<div class="result">
 							<div class="product-photo">
-								<img src="{{asset('img/products/'.$product['image'])}}">
+								<img src="{{asset('storage/'.$product['image'])}}">
 							</div>
 							<div class="product-info">
 								<h4>{{ $product['name'] }}</h4>

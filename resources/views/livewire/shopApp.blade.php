@@ -17,7 +17,7 @@
                     No Price
                 @endif
             </span>
-            <img class="item-image" src="{{url('img/products/')}}/{{ $product->image }}"/>
+            <img class="item-image" src="{{ asset('storage/'.$product->image) }}"/>
         </div>
     </div>
     @endforeach

@@ -29,26 +29,30 @@
 
 	<!-- Products In Stock -->
 	<div class="product-info product-stock-count relative rounded overflow-hidden p-4 flex-1 text-white
-	@if($product['stock'] <= round($product['stock_defective'] * 0.75 + $product['stock_defective']))
-	 bg-yellow-400
-	@elseif($product['stock'] > $product['stock_defective'])
-	 bg-blue-500 
-	@else
-	 bg-red-500
+	@if($product['stock_qty'] < $product['minimum_stock'])
+		bg-red-500
+	@elseif($product['stock_qty'] == $product['minimum_stock'])
+		bg-red-500
+	@elseif($product['stock_qty'] <= round($product['minimum_stock'] * 0.25 + $product['minimum_stock']))
+		bg-yellow-400 
+	@else 
+		bg-blue-500
 	@endif">
 		<div class="product-info-title font-bold">
 			In Stock
 		</div>
 		<div class="product-info-value text-5xl text-white font-bold mt-3">
-			{{ $product['stock']}}
+			{{ $product['stock_qty']}}
 		</div>
 		<div class="product-info-icon text-black opacity-25 text-6xl absolute top-2 right-4">
-			@if($product['stock'] <= round($product['stock_defective'] * 0.75 + $product['stock_defective']))
-				<i class="fas fa-exclamation-triangle"></i>
-			@elseif($product['stock'] > $product['stock_defective'])
-				<i class="fas fa-cubes"></i>
-			@else
+			@if($product['stock_qty'] < $product['minimum_stock'])
 				<i class="fas fa-exclamation-circle"></i>
+			@elseif($product['stock_qty'] == $product['minimum_stock'])
+				<i class="fas fa-exclamation-circle"></i>
+			@elseif($product['stock_qty'] <= round($product['minimum_stock'] * 0.25 + $product['minimum_stock']))
+				<i class="fas fa-exclamation-triangle"></i>
+			@else
+				<i class="fas fa-cubes"></i>
 			@endif
 		</div>
 	</div>
@@ -59,7 +63,7 @@
 			Alert Level
 		</div>
 		<div class="product-info-value text-5xl text-white font-bold mt-3">
-			{{ $product['stock_defective']}}
+			{{ $product['minimum_stock']}}
 		</div>
 		<div class="product-info-icon text-black opacity-25 text-6xl absolute top-2 right-4">
 			<i class="fas fa-exclamation-circle"></i>

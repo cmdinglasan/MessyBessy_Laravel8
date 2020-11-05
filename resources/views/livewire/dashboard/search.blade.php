@@ -17,8 +17,8 @@
 				@foreach($products as $product)
 				<a href="{{ route('dashboard-product-show', 'productId='. $product['id']) }}">
 					<div class="result my-3 p-3 rounded hover:bg-gray-100">
-						<div class="product-photo inline-block h-10 w-10 text-center">
-							<img src="{{ asset('img/products/'.$product['image']) }}" class="h-10">
+						<div class="product-photo inline-block h-10 w-10 text-center mr-2">
+							<img src="{{ asset('storage/'.$product['image']) }}" class="h-10">
 						</div>
 						<div class="product-info inline-block">
 							<h4 class="font-bold text-gray-700">{{ $product['name'] }}</h4>
