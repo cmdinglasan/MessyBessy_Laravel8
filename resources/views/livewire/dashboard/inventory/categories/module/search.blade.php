@@ -46,10 +46,7 @@
 	<table class="table-auto sortable w-100">
 	  <thead class="sticky top-0">
 	    <tr class="border-b border-gray-100">
-	      <th class="p-4 text-blue-500 uppercase"></th>
-	      <th class="p-4 text-blue-500 uppercase">Product Name</th>
-	      <th class="p-4 text-blue-500 uppercase">Category</th>
-	      <th class="p-4 text-blue-500 uppercase">Price</th>
+	      <th class="p-4 text-blue-500 uppercase">Category Name</th>
 	      <th class="p-4 text-blue-500 uppercase"></th>
 	    </tr>
 	  </thead>
@@ -59,35 +56,12 @@
 				@foreach($results as $result)
 				<tr class="result hover:bg-gray-100">
 					<td class="p-4">
-						<div class="product-photo h-8 w-8">
-                            @if(!empty($result['image']))
-							 <img src="{{ asset('storage/'.$result['image']) }}">
-                            @else
-                                <img src="https://via.placeholder.com/32x32.png"/>
-                            @endif
-						</div>
-					</td>
-					<td class="p-4">
 						<div class="product-info">
 							<h4 class="font-bold">
-								<a href="{{ route('dashboard-product-show', 'productId='.$result['id']) }}">
+								<a href="{{ route('dashboard-categories-show', 'catId='.$result['id']) }}">
                                     <span>{{ $result['name'] }}</span>
                                 </a>
 							</h4>
-						</div>
-					</td>
-					<td class="p-4">
-						<div class="product-category">
-                            @foreach($categories as $category)
-                                @if($result['product_category_id'] == $category['id'])
-                                <span>{{ $category['name'] }}</span>
-                                @endif
-                            @endforeach
-						</div>
-					</td>
-					<td class="p-4">
-						<div class="product-price">
-							<span>{{ $result['price'] }}</span>
 						</div>
 					</td>
 					<td class="p-4">
@@ -105,54 +79,34 @@
 				</tr>
 				@endforeach
 			@else
-                <tr>
-                    <td colspan="5">
-                        <div class="result error text-center m-3 text-gray-600">
-                            <i class="fas fa-exclamation-square text-2xl mb-2"></i><br/>
-                            <span class="error-text">No results found. Try searching again.</span>
+				<tr>
+					<td colspan="5">
+						<div class="result error text-center">
+							<span class="error-text">No results found. Try searching again.</span>
 						</div>
 					</td>
 				</tr>
 			@endif
 		@else
-        @if(!empty($products))
-			@foreach($products as $product)
+        @if(!empty($categories))
+			@foreach($categories as $result)
 				<tr class="result hover:bg-gray-100">
-					<td class="p-4">
-						<div class="product-photo h-8 w-8">
-							<img src="{{ asset('storage/'.$product['image']) }}">
-						</div>
-					</td>
 					<td class="p-4">
 						<div class="product-info">
                             <h4 class="font-bold">
-                                <a href="{{ route('dashboard-product-show','productId='.$product['id']) }}">
-                                    <span>{{ $product['name'] }}</span>
+                                <a href="{{ route('dashboard-categories-show','catId='.$result['id']) }}">
+                                    <span>{{ $result['name'] }}</span>
                                 </a>
                             </h4>
 						</div>
 					</td>
 					<td class="p-4">
-						<div class="product-category">
-                            @foreach($categories as $category)
-                                @if($product['product_category_id'] == $category['id'])
-                                <span>{{ $category['name'] }}</span>
-                                @endif
-                            @endforeach
-						</div>
-					</td>
-					<td class="p-4">
-						<div class="product-price">
-							<span>{{ $product['price'] }}</span>
-						</div>
-					</td>
-					<td class="p-4">
 						<div class="product-action">
-							<button class="btn editProduct bg-blue-400 hover:bg-blue-500 text-center text-white ml-2" role="button" wire:click="selectItem({{ $product['id'] }}, 'edit')">
+							<button class="btn editProduct bg-blue-400 hover:bg-blue-500 text-center text-white ml-2" role="button" wire:click="selectItem({{ $result['id'] }}, 'edit')">
 							<i class="fas fa-plus"></i>
 							<span>Edit</span>
 							</button>
-							<button class="btn deleteProduct bg-red-400 hover:bg-red-500 text-center text-white ml-2" role="button" wire:click="selectItem({{ $product['id'] }}, 'delete')">
+							<button class="btn deleteProduct bg-red-400 hover:bg-red-500 text-center text-white ml-2" role="button" wire:click="selectItem({{ $result['id'] }}, 'delete')">
 							<i class="fas fa-trash"></i>
 							<span>Delete</span>
 							</button>
@@ -180,7 +134,7 @@
     <div class="modal-content">
         <form>
             <div class="modal-header">
-                <h5 class="modal-title">Edit Product</h5>
+                <h5 class="modal-title">Edit Category</h5>
                 <div class="modal-action">
                     <a @click="hideModal" class="close-btn" data-dismiss="modal">
                         <i class="fas fa-times"></i>

@@ -2,6 +2,6 @@
 
 @section('content')
 
-	@livewire('dashboard.branches.index')
-    
+	@livewire('dashboard.inventory.categories.show')
+
 @endsection

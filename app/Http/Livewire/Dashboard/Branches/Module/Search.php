@@ -1,16 +1,15 @@
 <?php
 
-namespace App\Http\Livewire\Dashboard\Inventory\Products\Module;
+namespace App\Http\Livewire\Dashboard\Branches\Module;
 
 use Livewire\Component;
-use Livewire\WithPagination;
-use App\Models\Product;
-use App\Models\ProductCategory;
+use App\Models\Branch;
+use Illuminate\Support\Facades\DB;
 
-class SearchProducts extends Component
+class Search extends Component
 {
-	use WithPagination;
-    public $query, $results, $products, $categories;
+    public $query, $results, $branches;
+
     public $selectedItem, $action;
     public $updateMode = false;
 
@@ -25,8 +24,8 @@ class SearchProducts extends Component
 
     public function updatedQuery()
     {
-    	$this->results = Product::where('name','like', '%'.$this->query.'%')
-    		->orderBy('name','asc')
+    	$this->results = Branch::where('branch_name','like', '%'.$this->query.'%')
+    		->orderBy('branch_name','asc')
     		->get()
     		->toArray();
     }
@@ -44,21 +43,21 @@ class SearchProducts extends Component
 
     public function delete()
     {
-    	Product::destroy($this->selectedItem);
+    	Branch::destroy($this->selectedItem);
     }
 
     public function mount()
     {
     	$this->query = '';
-    	$this->products = Product::orderBy('name','asc')
+    	$this->branches = Branch::orderBy('branch_name','asc')
     		->get()
     		->toArray();
-        $this->categories = ProductCategory::all();
     }
 
     public function render()
     {
     	$query = $this->query;
-        return view('livewire.dashboard.inventory.products.module.search-products');
+    	$this->branches = Branch::all();
+        return view('livewire.dashboard.branches.module.search');
     }
 }

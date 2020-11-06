@@ -4,18 +4,26 @@ namespace App\Http\Livewire\Dashboard\Employees;
 
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\Team;
 
 class Index extends Component
 {
     use WithPagination;
-	public $user,  $query, $results;
+	public $user, $query, $results, $roles, $userID, $userInfo;
+
+    protected $queryString = ['userID'];
 
     public function render()
     {
         $users = User::paginate(25);
+        $teams = Team::all();
+        $this->roles = DB::table('team_user')
+            ->get()
+            ->toArray();
 
-        return view('livewire.dashboard.employees.index', compact('users'));
+        return view('livewire.dashboard.employees.index', compact('users', 'teams'));
     }
 
     protected $rules = [
@@ -37,5 +45,7 @@ class Index extends Component
         $this->users = User::orderBy('name','asc')
             ->get()
             ->toArray();
+
+        $this->userInfo = User::where('id',$this->userID)->get()->toArray();
     }
 }

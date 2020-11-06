@@ -1,4 +1,4 @@
-<div class="db-card-header db-card-header-green">
+<div class="db-card-header db-card-header-green" x-data="{ addModal: false }">
 	<div class="container">
 		<div class="header-title">
 			Products
@@ -7,15 +7,14 @@
 			Check all your Messy products.
 		</div>
 		<div class="header-action">
-			<a wire:click="showAddForm()" class="btn header-btn">
+			<a x-on:click="addModal = true" class="btn header-btn">
 				Add Product
 			</a>
 		</div>
 		<div class="header-image">
 		</div>
-		@if($addForm == 1)
-		<div class="header-modal">
-			<div class="background" wire:click="hideAddForm()"></div>
+		<div class="header-modal" x-show.transition="addModal" style="display: none;">
+			<div class="background" x-on:click="addModal = false"></div>
 			<div class="container relative z-10 bg-white p-10 rounded shadow-2xl max-w-md" x-data="{ isUploading: false, progress: 0 }"x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false" x-on:livewire-upload-progress="progress = $event.detail.progress">
 				<div class="header-modal-title mb-3">
 					<h2 class="text-gray-700 text-2xl font-bold">Add Product</h2>
@@ -68,13 +67,17 @@
 					<div class="form-group">
 						<label for="category" class="uppercase font-bold text-xs text-gray-400">Category</label>
 						<select wire:model="category" class="form-control @error('category') is-invalid @enderror" placeholder="Description">
-						@foreach ($categories as $category)
-                            @if($category['id'] == old('document'))
-                                <option value="{{$category['id']}}">{{$category['name']}}</option>
-                            @else
-                                <option value="{{$category['id']}}">{{$category['name']}}</option>
-                            @endif
-                        @endforeach
+						@if(!empty($categories))
+							@foreach ($categories as $category)
+	                            @if($category['id'] == old('document'))
+	                                <option value="{{$category['id']}}" selected="">{{$category['name']}}</option>
+	                            @else
+	                                <option value="{{$category['id']}}">{{$category['name']}}</option>
+	                            @endif
+	                        @endforeach
+	                    @else
+	                    	<option>No categories available</option>
+	                    @endif
 						</select>
 			            @error('category')
 			                <span class="invalid-feedback">
@@ -115,8 +118,6 @@
 	        	</form>
 	        </div>
         </div>
-        @else
-        @endif
 	</div>
 </div>
 <div class="db-content">

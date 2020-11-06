@@ -5,6 +5,8 @@ namespace App\Http\Livewire\Dashboard\Branches;
 use Livewire\Component;
 use App\Models\Branch;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
 
 class Index extends Component
 {
@@ -18,104 +20,49 @@ class Index extends Component
            $branch_country,
            $branch_contact_number,
            $branch_operating_hours,
-           $branch_other_info;
+           $branch_other_info,
+           $countries;
 
     public $isOpen = false;
+    public $addForm = false;
 
-  
+    public function showAddForm()
+    {
+        $this->addForm = true;
 
-    /**
+        $this->resetInputFields();
+    }
 
-     * The attributes that are mass assignable.
-
-     *
-
-     * @var array
-
-     */
+    public function hideAddForm()
+    {
+        $this->addForm = false;
+    }
 
     public function render()
-
     {
-
         $this->branches = Branch::all();
+        $this->countries = DB::table('countries')
+            ->get()
+            ->toArray();
 
         return view('livewire.dashboard.branches.index');
     }
 
-  
-
-    /**
-
-     * The attributes that are mass assignable.
-
-     *
-
-     * @var array
-
-     */
-
     public function create()
-
     {
-
         $this->resetInputFields();
-
         $this->openModal();
-
     }
-
-  
-
-    /**
-
-     * The attributes that are mass assignable.
-
-     *
-
-     * @var array
-
-     */
 
     public function openModal()
-
     {
-
         $isOpen = true;
-
     }
-
-  
-
-    /**
-
-     * The attributes that are mass assignable.
-
-     *
-
-     * @var array
-
-     */
 
     public function closeModal()
-
     {
-
         $isOpen = false;
-
     }
-
-  
-
-    /**
-
-     * The attributes that are mass assignable.
-
-     *
-
-     * @var array
-
-     */
 
     private function resetInputFields(){
 
@@ -129,6 +76,10 @@ class Index extends Component
         $this->branch_operating_hours = '';
         $this->branch_other_info = '';
 
+    }
+
+    public function mount()
+    {
     }
 
      
@@ -185,21 +136,11 @@ class Index extends Component
 
   
 
-        $this->closeModal();
+        $this->hideAddForm();
 
         $this->resetInputFields();
 
     }
-
-    /**
-
-     * The attributes that are mass assignable.
-
-     *
-
-     * @var array
-
-     */
 
     public function edit($id)
 

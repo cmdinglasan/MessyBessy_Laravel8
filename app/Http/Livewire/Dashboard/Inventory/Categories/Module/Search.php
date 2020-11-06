@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Livewire\Dashboard\Inventory\Products\Module;
+namespace App\Http\Livewire\Dashboard\Inventory\Categories\Module;
 
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Product;
 use App\Models\ProductCategory;
 
-class SearchProducts extends Component
+class Search extends Component
 {
-	use WithPagination;
-    public $query, $results, $products, $categories;
+    use WithPagination;
+    public $query, $results, $categories;
     public $selectedItem, $action;
     public $updateMode = false;
 
@@ -25,7 +25,7 @@ class SearchProducts extends Component
 
     public function updatedQuery()
     {
-    	$this->results = Product::where('name','like', '%'.$this->query.'%')
+    	$this->results = ProductCategory::where('name','like', '%'.$this->query.'%')
     		->orderBy('name','asc')
     		->get()
     		->toArray();
@@ -50,15 +50,15 @@ class SearchProducts extends Component
     public function mount()
     {
     	$this->query = '';
-    	$this->products = Product::orderBy('name','asc')
+    	$this->products = ProductCategory::orderBy('name','asc')
     		->get()
     		->toArray();
-        $this->categories = ProductCategory::all();
     }
 
     public function render()
     {
     	$query = $this->query;
-        return view('livewire.dashboard.inventory.products.module.search-products');
+    	$this->categories = ProductCategory::all();
+        return view('livewire.dashboard.inventory.categories.module.search');
     }
 }

@@ -30,7 +30,7 @@ class Index extends Component
         $this->image = '';
         $this->price = '';
         $this->stock_qty = '';
-        $this->stock_defective = '';
+        $this->minimum_stock = '';
     }
 
     public function showAddForm()
@@ -68,8 +68,8 @@ class Index extends Component
         $product->image = $imageName;
         $product->product_category_id = $this->category;
         $product->price = $this->price;
-        $product->stock = $this->stock_qty;
-        $product->stock_defective = $this->min_stock;
+        $product->stock_qty = $this->stock_qty;
+        $product->minimum_stock = $this->min_stock;
 
 
         $product->save();
