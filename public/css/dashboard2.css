@@ -512,3 +512,37 @@ body {
 @media (min-width: 1280px) { 
 
 }
+
+/*Fred css*/
+
+.sticky {
+	position: fixed;
+	top: 0;
+	z-index: 1;
+	background-color:white;
+  }
+  
+  .hamburger {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+  }
+
+.left-space{
+	padding-left: 50px;
+}
+
+.right-space{
+	padding-right: 60px;
+}
+
+a.nav-link:hover{
+    background: var(--messy-blue);
+	color: #fff !important;
+	transition: .5s ease;
+}
+a.nav-link:active{
+    background: var(--messy-blue);
+	color: #fff !important;
+	transition: .5s ease;
+}

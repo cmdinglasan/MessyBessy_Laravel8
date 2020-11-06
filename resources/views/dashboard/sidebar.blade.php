@@ -1,16 +1,16 @@
 <div class="sidebar-wrapper">
     <div class="dashboard-sidebar">
         <div class="sidebar-header">
-            <div class="header">
+            <div class="header sticky">
                 <a href="{{ route('home') }}">
-                    <div class="header-icon h-10 inline-block align-middle mr-3">
+                    <div class="header-icon left-space h-10 inline-block align-middle mr-3">
                         <img src="{{ asset('img/icon.png') }}" class="h-parent"/>
                     </div>
-                    <div class="header-title md:inline-block font-bold align-middle h-10 leading-10  text-xl">
+                    <div class="header-title right-space md:inline-block font-bold align-middle h-10 leading-10  text-xl">
                         Easy<span>Bessy</span>
                     </div>
                 </a>
-                <button class="btn nav-icon absolute top-5 right-5">
+                <button class="btn nav-icon hamburger">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
