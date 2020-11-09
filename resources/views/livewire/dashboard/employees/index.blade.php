@@ -1,5 +1,5 @@
-<div class="db-employee-wrapper flex">
-	<div class="employee-sidebar bg-gray-100 h-screen" style="width: 320px;">
+<div class="db-employee-wrapper flex h-screen">
+	<div class="employee-sidebar bg-gray-100 h-full relative" style="width: 320px;">
 		<div class="sidebar-title px-4 pt-5 pb-3">
 			<h3 class="font-black text-2xl">Accounts</h3>
 		</div>
@@ -13,10 +13,10 @@
 				@if(!empty($query))
 					@foreach($results as $user)
 						<a href="?userID={{ $user['id'] }}" class="p-4 hover:bg-gray-200 block flex hover:no-underline hover:text-gray-800">
-							<div class="account-photo flex-1 w-8">
+							<div class="account-photo w-8 mr-3 align-middle">
 								<img class="h-8 w-8 rounded-full object-cover" src="{{ $user['profile_photo_url'] }}" alt="{{ $user['name'] }}">
 							</div>
-							<div class="account-info flex-auto">
+							<div class="account-info flex-auto align-middle">
 								<h4 class="account-name font-bold mb-0">
 									{{ $user['name'] }}
 								</h4>
@@ -40,11 +40,11 @@
 					@endforeach
 				@else
 					@foreach($users as $user)
-						<a href="?userID={{ $user['id'] }}" class="p-4 hover:bg-gray-200 block flex hover:no-underline hover:text-gray-800">
-							<div class="account-photo flex-1 w-8">
+						<a href="?userID={{ $user['id'] }}" class="p-4 block hover:bg-gray-200 flex hover:no-underline hover:text-gray-800 @if($user['id'] == $userID) bg-gray-200 @else @endif">
+							<div class="account-photo w-8 mr-3 align-middle">
 								<img class="h-8 w-8 rounded-full object-cover" src="{{ $user['profile_photo_url'] }}" alt="{{ $user['name'] }}">
 							</div>
-							<div class="account-info flex-auto">
+							<div class="account-info flex-auto align-middle">
 								<h4 class="account-name font-bold mb-0">
 									{{ $user['name'] }}
 								</h4>

@@ -1,15 +1,15 @@
 <div class="search-pane-content">
 	<div class="search-box p-4">
 		<div class="container flex">
-			<div class="close-btn w-15 h-15 p-2 text-gray-800 rounded hover:bg-gray-200 mr-3 cursor-pointer text-center text-2xl leading-loose" @click="subSearch = false">
-				<i class="fas fa-chevron-left"></i>
+			<div class="close-btn w-15 h-15 p-2 text-gray-800 rounded hover:bg-gray-200 mr-3 cursor-pointer" x-show="subSearch">
+				<i class="fas fa-times mr-3"></i>
 			</div>
 			<div class="search-input bg-gray-100 flex-auto rounded">
 				<div class="icon w-8 hidden">
 					<i class="fas fa-search"></i>
 				</div>
 				<div class="search w-full">
-					<input type="text" class="h-15 outline-none p-4 flex-auto bg-transparent w-full" wire:model="query" placeholder="Search here">
+					<input type="text" class="h-14 outline-none px-3 flex-auto" wire:model="query" placeholder="Search here">
 				</div>
 			</div>
 		</div>

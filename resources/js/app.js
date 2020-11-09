@@ -8,10 +8,10 @@ import 'livewire-vue';
 window.Vue = Vue;
 
 /* Shop */
-Vue.component('shop-home', require('./components/shop/index.vue') default);
-Vue.component('shop-cart', require('./components/shop/cart.vue') default);
-Vue.component('shop-alerts', require('./components/shop/alerts.vue') default);
-Vue.component('shop-profile', require('./components/shop/profile.vue') default);
+Vue.component('shop-home', require('./components/shop/index.vue'));
+Vue.component('shop-cart', require('./components/shop/cart.vue'));
+Vue.component('shop-alerts', require('./components/shop/alerts.vue'));
+Vue.component('shop-profile', require('./components/shop/profile.vue'));
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

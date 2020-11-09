@@ -96,6 +96,10 @@ class Show extends Component
 
 	public function mount() 
 	{
+		if(isset($productId)) {
+        	return view('livewire.dashboard.inventory.products.show');
+    	}
+
 		$this->products = Product::where('id',$this->productId)->get()->toArray();
 		$this->categories = ProductCategory::get()->toArray();
 		$product = Product::find($this->productId);
@@ -108,6 +112,7 @@ class Show extends Component
 	}
     public function render()
     {
-        return view('livewire.dashboard.inventory.products.show');
+    	return view('livewire.dashboard.inventory.products.show');
+    	
     }
 }

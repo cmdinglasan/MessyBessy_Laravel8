@@ -43,21 +43,26 @@
 
 <body>
     <div id="app">
-        <div class="sidebar-wrapper">
+        <div class="dashboard">
+            @livewire('dashboard.header-menu')
+            <div class="content relative" style="padding-top: 106px; height: 100%;">
+                @yield('content')
+                @livewireScripts
+            </div>
+        </div>
+        <div class="sidebar-wrapper" hidden="">
             @include('dashboard.sidebar')     
         </div>
         <div class="main-content">
             <div class="dashboard-content">
                 @livewire('dashboard.header')
-                @yield('content')
-                @livewireScripts
             </div>
         </div>
     </div>
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
-        ]); ?>
+        ]); ?>;
         windows.addEventListener('openDeleteModal', event = {
             $('#deleteProduct').modal('show');
         });
