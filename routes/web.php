@@ -29,10 +29,10 @@ Route::group(['middleware' => 'auth:sanctum', 'verified'], function () {
 	/* Logout */
 
 	/* Shop links with Authentication */
-	Route::view('/shop', 'shop.index');
+	route::view('/shop', 'shop.index');
 	Route::view('/shop/cart', 'shop.cart')->name('product-search');
 	Route::view('/shop/search', 'shop.search')->name('product-search');
-
+	
 	// Dashboard - Employees
 	Route::view('/dashboard/employees', 'dashboard.employees.index')->name('dashboard-employees-index');
 

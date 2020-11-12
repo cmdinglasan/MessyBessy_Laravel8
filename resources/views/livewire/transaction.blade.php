@@ -1,24 +1,8 @@
 <div class="shop-content">
 	<div class="shop-header">
 		<div class="shop-menu">
-			<div class="container">
-				<div class="row">
-					<div class="col">
-						<button class="nav-btn">
-							<span></span>
-						</button>
-					</div>
-					<div class="col text-right">
-						<a type="button" class="btn barcode-btn" title="Scan Product Code">
-							<i class="far fa-qrcode"></i>
-						</a>
-						<a href="{{ route('product-search') }}" type="button" class="btn search-btn" title="Search for Products">
-							<i class="far fa-search"></i>
-						</a>
-					</div>
-				</div>
-			</div>
 		</div>
+	</div>
 		<div class="shop-greetings">
 			<div class="container">
 				<h2>
@@ -34,9 +18,8 @@
 		</div>
 	</div>
 	<div class="shop-main">
-		<div class="container">
-			@livewire('shop-app')
-		</div>
+		@livewire('transactions.search')
+		@livewireScripts
 	</div>
 
 	<div class="tab-content">
