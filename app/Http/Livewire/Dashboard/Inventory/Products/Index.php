@@ -127,9 +127,6 @@ class Index extends Component
         return view('livewire.dashboard.inventory.products.index');
     }
 
-    public function addToCart(int $productId)
-    {
-        Cart::add(Product::where('id', $productId)->first());
-    }
+
 
 }
