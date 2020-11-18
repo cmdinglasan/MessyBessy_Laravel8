@@ -11,7 +11,6 @@
                         <span class="item-weight">
                             240ml
                         </span>
-                    </div>
                     <span class="item-price mt-0">
                         @if(isset($product->price))
                             Php {{ $product->price }}

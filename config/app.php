@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
+        App\Providers\CartFacadeServiceProvider::class,
 
     ],
 
@@ -192,6 +193,7 @@ return [
 
     'aliases' => [
 
+        'Cart'=> App\Facades\Cart::class,
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,

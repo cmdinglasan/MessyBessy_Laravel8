@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductCategoryController;
-use App\Http\Livewire\ShopApp;
+use App\Http\Livewire\Shop;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,9 +30,9 @@ Route::group(['middleware' => 'auth:sanctum', 'verified'], function () {
 
 	/* Shop links with Authentication */
 	route::view('/shop', 'shop.index');
-	Route::view('/shop/cart', 'shop.cart')->name('product-search');
+	Route::view('/shop/cart', 'shop.cart')->name('cart');
 	Route::view('/shop/search', 'shop.search')->name('product-search');
-	
+
 	// Dashboard - Employees
 	Route::view('/dashboard/employees', 'dashboard.employees.index')->name('dashboard-employees-index');
 

@@ -6,6 +6,7 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Http\Request;
 use App\Models\Product;
+
 use App\Models\ProductCategory;
 
 class Show extends Component
@@ -60,7 +61,7 @@ class Show extends Component
 		if($this->productId) {
 
             $product = Product::find($this->productId);
-            
+
             if($product) {
                 $product->update([
                     'name'    => $this->name,
@@ -83,7 +84,7 @@ class Show extends Component
 		if($this->productId) {
 
             $product = Product::find($this->productId);
-            
+
             if($product) {
                 $product->destroy($this->productId);
             }
@@ -94,7 +95,7 @@ class Show extends Component
         return redirect()->route('dashboard-product-index');
 	}
 
-	public function mount() 
+	public function mount()
 	{
 		if(isset($productId)) {
         	return view('livewire.dashboard.inventory.products.show');
@@ -109,10 +110,11 @@ class Show extends Component
 			$this->name = $product->name;
 			$this->price = $product->price;
 		}
-	}
+    }
+
     public function render()
     {
     	return view('livewire.dashboard.inventory.products.show');
-    	
+
     }
 }
