@@ -56,4 +56,10 @@ class Transaction extends Component
     {
         $this->cartTotal = count(Cart::get()['products']);
     }
+
+    public function addToCart(int $productId)
+    {
+        Cart::add(Product::where('id', $productId)->first());
+        $this->emit('productAdded');
+    }
 }

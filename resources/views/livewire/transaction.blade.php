@@ -66,6 +66,9 @@
 			                <div class="item-image absolute bottom-0 right-0 h-full sm:block sm:w-20 text-center w-20">
 			                    <img class="h-full inline-block" src="{{ asset('storage/'.$product->image) }}"/>
 			                </div>
+			                <div class="addToCart">
+			                	<button wire:click="addToCart({{ $product->id }})" >Add to Cart</button>
+			                </div>
 			            </div>
 			        </div>
 			        @endforeach
