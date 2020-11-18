@@ -8,7 +8,7 @@ let router = new VueRouter({
 	base: '/',
 	fallback: true,
 	routes: [
-	    { path: '', require('components/shop/index.vue') default},
+	    { },
 	]
 });
 

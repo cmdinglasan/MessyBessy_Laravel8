@@ -10,7 +10,7 @@
     	<div class="nav-pane flex-1" x-data="{ subInventory: false, subSearch: false, subSidebar: false }">
     		<div class="navigation hidden md:flex relative items-stretch">
     			<a href="{{ route('shop-dashboard') }}" title="Dashboard" class="flex-auto hover:no-underline">
-    				<div class="nav-link p-3 text-gray-400 hover:text-blue-500 rounded mx-3 text-center">
+    				<div class="nav-link p-3 hover:text-blue-500 rounded mx-3 text-center @if(Route::is('shop-dashboard'))text-blue-500 @else  text-gray-400 @endif">
     					<i class="fas fa-chart-line text-xl"></i>
 	    				<span class="ml-2 font-bold"></span>
 	    			</div>
@@ -21,7 +21,7 @@
 	    				<span class="ml-2 font-bold"></span>
 	    				<span class="triangle absolute left-0" x-show.transition="subInventory" style="display: none; bottom: -26px; left: 50%; margin-left: -18px; width: 0; height: 0; border-left: 15px solid transparent; border-right: 15px solid transparent; border-bottom: 15px solid #3f83f8;"></span>
 	    			</div>
-	    			<div class="sub-nav fixed bg-blue-500 p-4 left-0 w-full cursor-auto" x-show.transition="subInventory"  			@click.away="subInventory = false" style="display: none; top: 106px;">
+	    			<div class="sub-nav fixed bg-blue-500 p-4 left-0 w-full cursor-auto" x-show.transition="subInventory" @click.away="subInventory = false" style="display: none; top: 106px;">
 	    				<div class="container flex">
 		    				<a href="{{ route('dashboard-product-index') }}" title="Products" class="flex-auto hover:no-underline">
 			    				<div class="sub-nav-link p-3 text-white rounded mx-3 text-center hover:bg-black hover:bg-opacity-25">
@@ -45,18 +45,18 @@
 	    			</div>
     			</div>
     			<a href="{{ route('dashboard-branches-index') }}" title="Branches" class="flex-auto hover:no-underline">
-    				<div class="nav-link p-3 text-gray-400 hover:text-blue-500 rounded mx-3 text-center">
+    				<div class="nav-link p-3 @if(Route::is('dashboard-branches-index'))text-blue-500 @else  text-gray-400 @endif hover:text-blue-500 rounded mx-3 text-center">
     					<i class="fas fa-store text-xl"></i>
 	    				<span class="ml-2 font-bold"></span>
 	    			</div>
     			</a>
     			<a href="{{ route('dashboard-employees-index') }}" title="Employees" class="flex-auto hover:no-underline">
-    				<div class="nav-link p-3 text-gray-400 hover:text-blue-500 rounded mx-3 text-center">
+    				<div class="nav-link p-3 @if(Route::is('dashboard-employees-index'))text-blue-500 @else  text-gray-400 @endif hover:text-blue-500 rounded mx-3 text-center">
     					<i class="fas fa-user text-xl"></i>
 	    				<span class="ml-2 font-bold"></span>
 	    			</div>
     			</a>
-    			<div title="Search" class="flex-auto hover:no-underline cursor-pointer ">
+    			<div title="Search" class="flex-auto hover:no-underline cursor-pointer">
     				<div class="nav-link p-3 text-gray-400 hover:text-blue-500 rounded mx-3 text-center relative transition" :class="{ 'text-blue-500': subSearch }" @click="subSearch = true">
     					<i class="fas fa-search text-xl"></i>
 	    				<span class="ml-2 font-bold"></span>

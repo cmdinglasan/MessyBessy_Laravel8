@@ -49,7 +49,7 @@
 					<div class="form-group">
 						<span class="uppercase font-bold text-xs text-gray-400">Image</span><br/>
 
-						<input type="file" id="image" wire:model="image" class="form-control @error('image') is-invalid @enderror" hidden>
+						<input type="file" id="image" wire:model="image" class="form-control @error('image') is-invalid @enderror" placeholder="{{ old($product['image']) }}"hidden>
 
 						@if ($image)
 							<img src="{{ $image->temporaryUrl() }}" class="h-20 mb-3" alt="Product Image">

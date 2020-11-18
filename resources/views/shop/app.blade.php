@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -23,6 +25,15 @@
     <script src="{{ asset('js/messy.js') }}" defer></script>
     <script src="{{ asset('js/main.js') }}" defer></script>
 
+    <!-- App Icons-->
+
+    <link rel="apple-touch-icon" href="{{ asset('storage/appicon/ios/AppIcon.appiconset/Icon-App-60x60@2x.png') }}" />
+    <link rel="apple-touch-icon" sizes="58x58" href="{{ asset('storage/appicon/ios/AppIcon.appiconset/Icon-App-29x29@2x.png') }}" />
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('storage/appicon/ios/AppIcon.appiconset/Icon-App-76x76@1x.png') }}" />
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('storage/appicon/ios/AppIcon.appiconset/Icon-App-76x76@2x.png') }}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('storageappicon//ios/AppIcon.appiconset/Icon-App-60x60@3x.png') }}" />
+    <link rel="shortcut icon" href="{{ asset('storage/appicon/favicon.ico') }}" type="image/x-icon">  
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;900&display=swap" rel="stylesheet">
@@ -41,6 +52,7 @@
 
 <body>
     <div id="app">
+        @livewire('transactions.header')
         <div class="shop-content">
             @yield('content')
         </div>
