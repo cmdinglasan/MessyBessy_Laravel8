@@ -43,73 +43,23 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Shop Header */
 .shop-header {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	padding: 20px 20px;
+}
+.shop-header .header-nav {
 	position: relative;
-	padding: 40px 20px;
+	height: 64px;
 }
-.shop-menu {
-	margin-bottom: 30px;
+.header-nav .input-form-alias {
+
 }
-.shop-menu .nav-btn {
-	position: relative;
-	height: 52px;
-	width: 52px;
-	padding: 20px;
-	display: block;
-}
-.shop-menu .nav-btn span {
-	height: 2px;
-	width: 15px;
-	background: #212121;
-	border-radius: 2px;
-	display: block;
-}
-.shop-menu .nav-btn span:before {
-	content: '';
-	position: absolute;
-	height: 2px;
-	width: 20px;
-	background: #212121;
-	border-radius: 2px;
-	display: block;
-	top: 15px;
-	transition: all .2s ease;
-}
-.shop-menu .nav-btn span:after {
-	content: '';
-	position: absolute;
-	height: 2px;
-	width: 10px;
-	background: #212121;
-	border-radius: 2px;
-	display: block;
-	bottom: 15px;
-	transition: all .2s ease;
-}
-.shop-menu .nav-btn:hover span,
-.shop-menu .nav-btn:hover span:after, {
-	width: 30px;
-}
-.shop-menu .barcode-btn,
-.shop-menu .search-btn {
-	color: #212121;
-	font-size: 18px;
-	width: 50px;
-	height: 50px;
-	display: inline-block;
-	margin: 10px 10px 10px 10px;
-	border-radius: 5px;
-	padding: 10px;
-	line-height: 30px;
-	border: 1px solid rgba(0,0,0,0.05);
-	border-radius: 20px;
-}
-.shop-menu .barcode-btn:hover,
-.shop-menu .search-btn:hover {
-	background: rgba(0,0,0,0.05);
-	border-color: transparent;
-}
-.shop-header .shop-greetings {
-	margin: 30px 0;
+.header-nav .nav-link {
+	width: 3.5rem;
+	height: 3.5rem;
+	line-height: 2.5rem;
+	text-align: center;
 }
 .shop-greetings h2 {
 	font-size: 32px;
@@ -208,11 +158,10 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Shop Main */
 .shop-main {
-	margin: 30px 20px 105px 20px;
+	margin: 124px 0px 105px 0px;
 }
 .shop-main .product-items {
 	position: relative;
-	padding: 0 10px;
 	z-index: 3;
 }
 .shop-main .product-items .product-item {
@@ -226,15 +175,15 @@ h1, h2, h3, h4, h5, h6 {
 	background: #fff;
 }
 .shop-main .product-items .product-item:hover {
-	transform: scale(1.05);
-	box-shadow: 2px 32px 17px -23px rgba(150,168,205,0.4);
+	/*transform: scale(1.05);
+	box-shadow: 2px 32px 17px -23px rgba(150,168,205,0.4); */
 	background: #F7F9FB;
 	border-color: transparent;
 }
 .shop-main .product-items .product-item .item-info {
 }
 .shop-main .product-items .product-item .item-info .item-main-info {
-	height: 96px;
+	/* height: 96px; */
 }
 .shop-main .product-items .product-item .item-info .item-name {
 	font-weight: bold;
@@ -254,13 +203,70 @@ h1, h2, h3, h4, h5, h6 {
 	font-size: 24px;
 	font-family: 'Montserrat', Arial, sans-serif;
 }
+/*
 .shop-main .product-items .product-item .item-info .item-image {
 	width: 250px;
 	position: absolute;
 	bottom: -25%;
 	right: -10%;
-}
+} */
 
+/* Shop - Product Modal */
+.product-modal {
+	overflow: hidden;
+}
+.product-modal .product-header {
+	position: relative;
+}
+.product-modal .product-header .action-bar {
+	padding: 2rem 2rem 0 2rem;
+	position: absolute;
+	width: 100%;
+	z-index: 3;
+}
+.product-modal .product-header .product-title {
+	position: relative;
+	z-index: 2;
+	padding: 2rem 2rem 1rem 2rem;
+}
+.product-modal .product-header .product-title .title {
+	margin: 4rem 0 0 0;
+	font-size: 32px;
+	font-weight: 900;
+	width: 70%;
+}
+.product-modal .product-header .product-image {
+	z-index: 2;
+	height: ;
+}
+.product-modal .product-header .product-image:before {
+	content: '';
+	position: absolute;
+	height: 90%;
+	width: 150%;
+	left: -25%;
+	border-radius: 0 0 100% 100%;
+	background: var(--messy-blue);
+}
+.product-modal .product-header .product-image .image {
+	position: relative;
+	z-index: 3;
+	padding-top: 100px;	
+	max-width: 40%;
+	height: 100%;
+}
+.product-modal .checkout .addToCart-btn {
+	background: var(--messy-blue);
+}
+.product-modal .product-main {
+	position: relative;
+	z-index: 3;
+	margin: 1rem 4rem 6rem 4rem;
+}
+.product-modal .product-main .product-name h2 {
+	font-weight: 900;
+	color: var(--messy-blue);
+}
 
 /* Shop Footer */
 .shop-footer {
@@ -281,7 +287,7 @@ h1, h2, h3, h4, h5, h6 {
 	height: 75px;
 	width: 100%;
 	outline: none;
-	color: rgba(0,0,0,0.3);
+	color: rgba(0,0,0,0.5);
 	position: relative;
 	display: block;
 	text-decoration: none;
@@ -297,7 +303,6 @@ h1, h2, h3, h4, h5, h6 {
 	color: var(--messy-blue);
 }
 .shop-footer .footer-btn span {
-	display: inline-block;
 	vertical-align: top;
 	font-weight: bold;
 }

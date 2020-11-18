@@ -1,38 +1,59 @@
-<div class="container">
-<div class="col text-right">
-                        <a type="button" class="btn barcode-btn" title="Scan Product Code">
-                            <i class="far fa-qrcode"></i>
-                        </a>
-                        <div class="search-input">
-                        <div class="icon search">
-                            <i class="fas fa-search"></i>
-                        </div>
-                        <input type="text" placeholder="Search for products" maxlength="100" wire:model="query"/>
+<div class="product-items flex top-items my-4">
+    @if(!empty($query))
+        @if(!empty($products))
+            @foreach($products as $product)            
+            <div class="product-item no-gutters">
+                <div class="item-info relative m-2">
+                    <div class="item-main-info">
+                        <h4 class="item-name">
+                            {{ $product->name }}
+                        </h4>
+                        <span class="item-weight">
+                            240ml
+                        </span>
                     </div>
-</div>
-<div class="product-items row">
-    @foreach($products as $product)            
-    <div class="product-item col-lg-4 col-md-6 m-2 no-gutters">
-        <div class="item-info">
-            <div class="item-main-info">
-                <h4 class="item-name">
-                    {{ $product->name }}
-                </h4>
-                <span class="item-weight">
-                    240ml
-                </span>
+                    <span class="item-price mt-0">
+                        @if(isset($product->price))
+                            Php {{ $product->price }}
+                        @else
+                            No Price
+                        @endif
+                    </span>
+                    <div class="item-image absolute bottom-0 right-0 h-full sm:block sm:w-20 text-center w-20">
+                        <img class="h-full inline-block" src="{{ asset('storage/'.$product->image) }}"/>
+                    </div>
+                </div>
+                {{ $products->links() }}
             </div>
-            <span class="item-price">
-                @if(isset($product->price))
-                    Php {{ $product->price }}
-                @else
-                    No Price
-                @endif
-            </span>
-            <img class="item-image" src="{{ asset('storage/'.$product->image) }}"/>
+            @endforeach
+        @else
+            <span>No results found</span>
+        @endif
+    @else
+        @foreach($products as $product)            
+        <div class="product-item col-lg-4 col-md-6 m-2 no-gutters">
+            <div class="item-info relative">
+                <div class="item-main-info">
+                    <h4 class="item-name">
+                        {{ $product->name }}
+                    </h4>
+                    <span class="item-weight">
+                        240ml
+                    </span>
+                </div>
+                <span class="item-price mt-0">
+                    @if(isset($product->price))
+                        Php {{ $product->price }}
+                    @else
+                        No Price
+                    @endif
+                </span>
+                <div class="item-image absolute bottom-0 right-0 h-full sm:block sm:w-20 text-center w-20">
+                    <img class="h-full inline-block" src="{{ asset('storage/'.$product->image) }}"/>
+                </div>
+            </div>
             {{ $products->links() }}
         </div>
-    </div>
-    @endforeach
-</div>
+        @endforeach
+    @endif
 </div>
