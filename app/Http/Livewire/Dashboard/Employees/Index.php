@@ -92,11 +92,8 @@ class Index extends Component
             $data = array_merge($data, ['email' => $this->email]);
         }
 
-
-
         if (count($data)) {
             User::find($this->userID)->update($data);
-            return redirect()->to('/dashboard/employees');
         }
     }
 }

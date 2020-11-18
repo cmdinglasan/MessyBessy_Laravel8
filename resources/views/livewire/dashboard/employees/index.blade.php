@@ -111,13 +111,14 @@
 				</div>
 				<div class="account-overview my-10">
 
-					<button class="btn btn-primary" onclick="test();">Edit</button>
+					<button class="btn btn-primary" onclick="test()">Edit</button>
 
 					<button wire:click="update()" class="btn btn-primary">Save</button>
+
 					<div class="form">
 						<div class="form-group">
 							<label for="name" class="text-xs uppercase text-gray-400 font-bold">Name</label>
-							<input wire:model="name" type="text" id="name" class="form-control" readonly="" />
+							<input wire:model="name" type="text" id="name" value="{{ $user['name'] }}" class="form-control" disabled="" />
 							@if($errors->has('name'))
 							<p style="color: red">{{$errors->first('name')}}</p>
 							@endif
@@ -125,7 +126,7 @@
 						<div class="row">
 							<div class="form-group col">
 								<label for="email" class="text-xs uppercase text-gray-400 font-bold">Email Address</label>
-								<input wire:model="email" type="email" id="email" class="form-control" readonly="" />
+								<input wire:model="email" type="email" id="email" value="{{ $user['email'] }}" class="form-control" disabled="" />
 								@if($errors->has('email'))
 								<p style="color: red">{{$errors->first('email')}}</p>
 								@endif
@@ -169,9 +170,9 @@
 <script>
 	function test() {
 		let name = document.getElementById('name');
-		name.removeAttribute('readonly');
+		name.removeAttribute('disabled');
 		let email = document.getElementById('email');
-		email.removeAttribute('readonly');
+		email.removeAttribute('disabled');
 		// let password = document.getElementById('password');
 		// password.removeAttribute('disabled');
 		// password.setAttribute('value', "");
