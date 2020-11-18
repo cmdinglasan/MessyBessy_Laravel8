@@ -5,8 +5,8 @@
 				<div class="icon inline-block mr-2">
 					<i class="fas fa-search"></i>
 				</div>
-				<div class="search inline-block">
-					<input type="text" wire:model="query" placeholder="Search here..."/>
+				<div class="search inline-block" style="width: 100%;">
+					<input type="text" wire:model="query" placeholder="Search here..." style="width: 100%;"/>
 				</div>
 			</div>
 			<a href="{{ route('shop-cart') }}" class="w-14 mr-3">
@@ -22,6 +22,13 @@
 					<i class="fas fa-bars"></i>
 				</div>
 			</a>
+		</div>
+	</div>
+</div>
+<div class="shop-slideshow">
+	<div class="container">
+		<div class="slideshow-img">
+			<img src="{{ asset('storage/img/slideshow/slideshow_1.png') }}"/>
 		</div>
 	</div>
 </div>

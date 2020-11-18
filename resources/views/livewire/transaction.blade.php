@@ -21,7 +21,7 @@
 					@endif
 					<br/>{{ $this->user['name'] }}</h2>
 			</div>
-			<div class="product-items flex top-items my-4">
+			<div class="product-items sm:flex top-items my-4">
 			    @if(!empty($query))
 			        @if(!empty($products))
 			            @foreach($products as $product)            
@@ -54,7 +54,7 @@
 			        @endif
 			    @else
 			        @foreach($products as $product)            
-			        <div class="product-item col-lg-4 col-md-6 m-2 no-gutters">
+			        <div class="product-item m-2 no-gutters" wire:click="addToCart({{ $product->id }})" >
 			            <div class="item-info relative">
 			                <div class="item-main-info">
 			                    <h4 class="item-name">
@@ -74,9 +74,6 @@
 			                <div class="item-image absolute bottom-0 right-0 h-full sm:block sm:w-20 text-center w-20">
 			                    <img class="h-full inline-block" src="{{ asset('storage/'.$product->image) }}"/>
 			                </div>
-			                <div class="addToCart">
-			                	<button wire:click="addToCart({{ $product->id }})" >Add to Cart</button>
-			                </div>
 			            </div>
 
 			        </div>
@@ -84,18 +81,6 @@
 			    @endif
 			</div>
 			@livewireScripts
-		</div>
-
-		<div class="tab-content">
-			<div id="cart" class="tab-pane fade">
-				#cart
-			</div>
-			<div id="alerts" class="tab-pane fade">
-				#alerts
-			</div>
-			<div id="profile" class="tab-pane fade">
-				#profile
-			</div>
 		</div>
 	</div>
 </div>
