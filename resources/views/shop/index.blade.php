@@ -8,7 +8,3 @@
     @livewireScripts
 </div>
 @endsection
-
-@section('footer')
-
-@endsection

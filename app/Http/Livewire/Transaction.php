@@ -16,23 +16,10 @@ class Transaction extends Component
     use WithPagination;
     public $searchText, $categories;
 
-    public $cartTotal = 0;
-
 	protected $rules = [
         'searchText' => 'required|min:1',
         'categories'=> 'nullable',
     ];
-
-    protected $listeners = [
-        'productAdded' => 'updateCartTotal',
-        'productRemoved' => 'updateCartTotal',
-        'clearCart' => 'updateCartTotal'
-    ];
-
-    public function mount(): void
-    {
-        $this->cartTotal = count(Cart::get()['products']);
-    }
 
     public function render()
     {
@@ -50,11 +37,6 @@ class Transaction extends Component
             'products' => Product::where('product_category_id', 'like', '%'.$categories.'%')->paginate(10)
 
         ]);
-    }
-
-    public function updateCartTotal(): void
-    {
-        $this->cartTotal = count(Cart::get()['products']);
     }
 
     public function addToCart(int $productId)

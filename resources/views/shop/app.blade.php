@@ -53,6 +53,7 @@
 <body>
     <div id="app">
         @yield('content')
+        @livewire('shop.modules.footer')
         @livewireScripts
     </div>
 

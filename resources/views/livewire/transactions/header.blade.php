@@ -7,12 +7,14 @@
 				</div>
 				<div class="search inline-block">
 					<input type="text" wire:model="query" placeholder="Search here..."/>
-					<span x-show.transition="search">Test</span>
 				</div>
 			</div>
-			<a href="#" class="w-14 mr-3">
-				<div class="nav-link bg-gray-100 rounded-2xl">
+			<a href="{{ route('shop-cart') }}" class="w-14 mr-3">
+				<div class="nav-link bg-gray-100 rounded-2xl cart-btn">
 					<i class="fas fa-shopping-cart"></i>
+                    <div class="count">
+                        {{ $cartTotal }}
+                    </div>
 				</div>
 			</a>
 			<a href="#" class="w-14">

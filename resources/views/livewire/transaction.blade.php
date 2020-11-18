@@ -1,5 +1,5 @@
 <div class="shop-content">
-	@livewire('transactions.header')
+    @livewire('transactions.header')
 	<div class="container">
 		<div class="shop-main">
 			<div class="shop-greetings">
@@ -89,40 +89,4 @@
 			</div>
 		</div>
 	</div>
-</div>
-
-<div class="shop-footer">
-    <div class="container">
-        <div class="row navigation nav nav-tabs" role="tablist">
-            <div class="col">
-                <a wire:ignore.self href="#" class="footer-btn active" aria-controls="home" role="tab" data-toggle="tab">
-                    <i class="far fa-home"></i>
-                    <span class="hidden sm:inline-block">Home</span>
-                </a>
-            </div>
-            <div class="col">
-                <a wire:ignore.self href="/shop/cart" class="footer-btn" aria-controls="cart" role="tab" data-toggle="tab">
-                    <i class="far fa-shopping-cart"></i>
-                    <span>Cart</span>
-                    @if(isset($productCount))
-                    <div class="count">
-                    	{{ $cartTotal }}
-                	</div>
-					@endif
-                </a>
-            </div>
-            <div class="col">
-                <a wire:ignore.self href="#alerts" class="footer-btn" aria-controls="alerts" role="tab" data-toggle="tab">
-                    <i class="far fa-bell"></i>
-                    <span class="hidden sm:inline-block">Alerts</span>
-                </a>
-            </div>
-            <div class="col">
-                <a wire:ignore.self href="#profile" class="footer-btn" aria-controls="profile" role="tab" data-toggle="tab">
-                    <i class="far fa-user"></i>
-                    <span class="hidden sm:inline-block">Profile</span>
-                </a>
-            </div>
-        </div>
-    </div>
 </div>

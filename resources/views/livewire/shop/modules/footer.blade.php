@@ -8,15 +8,6 @@
                 </a>
             </div>
             <div class="col">
-                <a wire:ignore.self href="{{ route('shop-cart') }}" class="footer-btn" aria-controls="cart" role="tab" data-toggle="tab">
-                    <i class="far fa-shopping-cart"></i>
-                    <span>Cart</span>
-                    <div class="count">
-                        {{ $cartTotal }}
-                    </div>
-                </a>
-            </div>
-            <div class="col">
                 <a wire:ignore.self href="#alerts" class="footer-btn" aria-controls="alerts" role="tab" data-toggle="tab">
                     <i class="far fa-bell"></i>
                     <span>Alerts</span>
