@@ -39,6 +39,20 @@ class Index extends Component
             ->toArray();
     }
 
+
+    public function mount()
+    {
+        $model = User::find($this->userID);
+        $this->name = $model->name;
+        $this->email =$model->email;
+
+        $this->query = '';
+        $this->users = User::orderBy('name','asc')
+            ->get()
+            ->toArray();
+
+        $this->userInfo = User::where('id',$this->userID)->get()->toArray();
+    }
     public function update()
     {
         $data = [];
@@ -49,25 +63,11 @@ class Index extends Component
         }
         if ($this->email !== $this->prevEmail)
         {
-            $data = array_merge($data, ['email' => $this->name]);
+            $data = array_merge($data, ['email' => $this->email]);
         }
 
-<<<<<<< HEAD
-        if (count($data)) {
-=======
         if(count($data)) {
->>>>>>> 31f1aac9679245995a09ffc60848e445c2c35641
             User::find($this->userID)->update($data);
         }
-    }
-
-    public function mount()
-    {
-        $this->query = '';
-        $this->users = User::orderBy('name','asc')
-            ->get()
-            ->toArray();
-
-        $this->userInfo = User::where('id',$this->userID)->get()->toArray();
     }
 }
