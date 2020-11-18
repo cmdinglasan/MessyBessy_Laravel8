@@ -5,6 +5,7 @@
 
     @livewire('transaction')
     @livewireScripts
+    
 </div>
 @endsection
 

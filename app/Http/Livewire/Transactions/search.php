@@ -31,6 +31,7 @@ class Search extends Component
     public function addToCart(int $productId)
     {
         Cart::add(Product::where('id', $productId)->first());
+        $this->emit('productAdded');
     }
 }
 ?>

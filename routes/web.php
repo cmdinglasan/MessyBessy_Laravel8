@@ -29,8 +29,8 @@ Route::group(['middleware' => 'auth:sanctum', 'verified'], function () {
 	/* Logout */
 
 	/* Shop links with Authentication */
-	route::view('/shop', 'shop.index');
-	Route::view('/shop/cart', 'shop.cart')->name('cart');
+	route::view('/shop', 'shop.index')->name('shop-main');
+	Route::view('/shop/cart', 'shop.cart')->name('shop-cart');
 	Route::view('/shop/search', 'shop.search')->name('product-search');
 
 	// Dashboard - Employees
