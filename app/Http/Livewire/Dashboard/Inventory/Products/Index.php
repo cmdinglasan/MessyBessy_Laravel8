@@ -7,6 +7,7 @@ use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Facades\Cart;
 
 class Index extends Component
 {
@@ -125,4 +126,10 @@ class Index extends Component
         $this->categories = ProductCategory::all();
         return view('livewire.dashboard.inventory.products.index');
     }
+
+    public function addToCart(int $productId)
+    {
+        Cart::add(Product::where('id', $productId)->first());
+    }
+
 }

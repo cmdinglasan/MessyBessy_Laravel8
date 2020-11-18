@@ -1,5 +1,6 @@
 @extends('shop.app')
 
 @section('content')
-    @livewire('shop-App')
+    @livewire('shop.cart')
+    @livewireScripts
 @endsection

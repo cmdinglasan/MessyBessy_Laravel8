@@ -13,6 +13,10 @@ Vue.component('shop-cart', require('./components/shop/cart.vue'));
 Vue.component('shop-alerts', require('./components/shop/alerts.vue'));
 Vue.component('shop-profile', require('./components/shop/profile.vue'));
 
+var Turbolinks = require('turbolinks');
+Turbolinks.start();
+
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

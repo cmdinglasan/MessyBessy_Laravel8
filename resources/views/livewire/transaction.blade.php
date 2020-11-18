@@ -45,14 +45,12 @@
                 </a>
             </div>
             <div class="col">
-                <a wire:ignore.self href="#cart" class="footer-btn" aria-controls="cart" role="tab" data-toggle="tab">
+                <a wire:ignore.self href="/shop/cart" class="footer-btn" aria-controls="cart" role="tab" data-toggle="tab">
                     <i class="far fa-shopping-cart"></i>
                     <span>Cart</span>
-                    @if(isset($productCount))
                     <div class="count">
-                    	{{ $productCount }}
+                    	{{ $cartTotal }}
                 	</div>
-                	@endif
                 </a>
             </div>
             <div class="col">

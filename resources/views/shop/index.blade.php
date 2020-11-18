@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="transaction-content">
-    
+
     @livewire('transaction')
     @livewireScripts
 </div>
