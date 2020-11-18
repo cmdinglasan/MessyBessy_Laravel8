@@ -23,6 +23,7 @@
     	<button type="button" class="addToCart-btn p-3 w-full md:rounded-full font-bold outline-none">
     		<i class="fad fa-shopping-basket mr-2"/></i> Add to Cart
     	</button>
+    	
     </div>
 </div>
 @endforeach

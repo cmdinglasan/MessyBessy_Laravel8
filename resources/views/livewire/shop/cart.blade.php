@@ -27,6 +27,7 @@
                     <button wire:click="checkout()" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                         Checkout
                     </button>
+                    
                 </div>
             @else
                 <div class="text-center w-full border-collapse p-6">
