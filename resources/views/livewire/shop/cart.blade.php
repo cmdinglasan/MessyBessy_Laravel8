@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div>
     <div class="w-2/3 mx-auto">
         <div class="bg-white shadow-md rounded my-6">
@@ -35,7 +34,7 @@
                     <span class="text-lg">¡Your cart is empty!</span>
                 </div>
             @endif
-=======
+
 <div class="shop-cart my-10">
     <div class="container">
         <div style="display: none;">{{ $total = 0 }}</div>
@@ -48,7 +47,7 @@
             <div class="cart-title mt-4">
                 <h2 class="text-3xl font-black">Cart</h2>
             </div>
->>>>>>> b4805e0fd2482ef8388905c03fd706c067caaee5
+
         </div>
         @if(count($cart['products']) > 0)
             <div class="cart-items flex">

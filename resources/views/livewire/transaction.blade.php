@@ -2,14 +2,6 @@
     @livewire('transactions.header')
 	<div class="container">
 		<div class="shop-main">
-			<div class="input-form-alias rounded-2xl bg-gray-100 flex-auto p-3 h-14 mr-3" x-on:click="search = true">
-				<div class="icon inline-block mr-2">
-					<i class="fas fa-search"></i>
-				</div>
-				<div class="search inline-block">
-					<input type="text" wire:model="query" placeholder="Search here..."/>
-				</div>
-			</div>
 			<div class="shop-greetings">
 				<h2>
 					@if($time < 12)
