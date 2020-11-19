@@ -42,9 +42,12 @@ class Index extends Component
 
     public function mount()
     {
-        $model = User::find($this->userID);
-        $this->name = $model->name;
-        $this->email =$model->email;
+        if(isset($userID))
+        {
+            $model = User::find($this->userID);
+            $this->name = $model->name;
+            $this->email = $model->email;
+        }
 
         $this->query = '';
         $this->users = User::orderBy('name','asc')

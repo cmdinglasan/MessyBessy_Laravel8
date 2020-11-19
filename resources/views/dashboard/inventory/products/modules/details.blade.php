@@ -20,7 +20,9 @@
 		<div class="form-group">
 			<label for="price" class="text-xs uppercase text-gray-400 font-bold">Category</label>
 			@foreach($categories as $category)
-				<h4>{{ $category['name'] }}</h4>
+				@if($product['product_category_id'] == $category['id'])
+					<h4>{{ $category['name'] }}</h4>
+				@endif
 			@endforeach
 		</div>
 	</div>

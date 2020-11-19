@@ -2,7 +2,7 @@
 	@foreach($products as $product)
 <div class="db-card-header bg-gray-100 py-0">
 	<div class="container relative overflow-hidden">
-		<div class="header-title md:pt-20 md:pb-10">
+		<div class="header-title text-4xl md:text-6xl pt-10 md:pt-20 md:pb-5">
 			{{ $product['name'] }}
 		</div>
 		<div class="header-subtitle">
@@ -17,7 +17,7 @@
 				<span>Delete</span>
 			</button>
 		</div -->
-		<div class="header-image absolute top-0 right-0">
+		<div class="header-image absolute top-10 right-0 w-10 md:w-1/4 md:text-right">
 			<img src="{{ asset('storage/'.$product['image']) }}"/>
 		</div>
 		@if($modalFormVisible == 1)

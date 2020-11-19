@@ -12,7 +12,8 @@
             </div>
         </div>
         @if(count($cart['products']) > 0)
-            <div class="cart-items">
+            <div class="cart-items flex">
+                <div class="container">
                 @foreach($cart['products'] as $product)
                     <div class="cart-item flex">
                         <div class="item-image text-center">
@@ -39,6 +40,7 @@
                     </div>
                     <div style="display: none;">{{ $total += $product->price }}</div>
                 @endforeach
+                </div>
             </div>
             <div class="cart-footer">
                 <div class="container flex">

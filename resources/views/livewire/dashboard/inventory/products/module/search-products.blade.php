@@ -76,7 +76,7 @@
 							</h4>
 						</div>
 					</td>
-					<td class="p-4">
+					<!-- td class="p-4">
 						<div class="product-category">
                             @foreach($categories as $category)
                                 @if($result['product_category_id'] == $category['id'])
@@ -84,22 +84,10 @@
                                 @endif
                             @endforeach
 						</div>
-					</td>
+					</td -->
 					<td class="p-4">
 						<div class="product-price">
 							<span>{{ $result['price'] }}</span>
-						</div>
-					</td>
-					<td class="p-4">
-						<div class="product-action">
-							<button class="btn editProduct bg-blue-400 hover:bg-blue-500 text-center text-white ml-2" role="button" wire:click="selectItem({{ $result['id'] }}, 'edit')">
-							<i class="fas fa-plus"></i>
-							<span>Edit</span>
-							</button>
-							<button class="btn deleteProduct bg-red-400 hover:bg-red-500 text-center text-white ml-2" role="button" wire:click="selectItem({{ $result['id'] }}, 'delete')">
-							<i class="fas fa-trash"></i>
-							<span>Delete</span>
-							</button>
 						</div>
 					</td>
 				</tr>
@@ -132,7 +120,7 @@
                             </h4>
 						</div>
 					</td>
-					<td class="p-4">
+					<!-- td class="p-4">
 						<div class="product-category">
                             @foreach($categories as $category)
                                 @if($product['product_category_id'] == $category['id'])
@@ -140,22 +128,10 @@
                                 @endif
                             @endforeach
 						</div>
-					</td>
+					</td -->
 					<td class="p-4">
 						<div class="product-price">
 							<span>{{ $product['price'] }}</span>
-						</div>
-					</td>
-					<td class="p-4">
-						<div class="product-action">
-							<button class="btn editProduct bg-blue-400 hover:bg-blue-500 text-center text-white ml-2" role="button" wire:click="selectItem({{ $product['id'] }}, 'edit')">
-							<i class="fas fa-plus"></i>
-							<span>Edit</span>
-							</button>
-							<button class="btn deleteProduct bg-red-400 hover:bg-red-500 text-center text-white ml-2" role="button" wire:click="selectItem({{ $product['id'] }}, 'delete')">
-							<i class="fas fa-trash"></i>
-							<span>Delete</span>
-							</button>
 						</div>
 					</td>
 				</tr>

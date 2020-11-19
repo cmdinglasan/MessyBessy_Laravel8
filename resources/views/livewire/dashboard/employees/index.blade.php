@@ -118,7 +118,7 @@
 					<div class="form">
 						<div class="form-group">
 							<label for="name" class="text-xs uppercase text-gray-400 font-bold">Name</label>
-							<input wire:model="name" type="text" id="name" class="form-control" readonly="" />
+							<input wire:model="name" type="text" id="name" class="form-control" value="{{ old($user['name'], auth()->user()->name) }}" readonly="" />
 						</div>
 						<div class="row">
 							<div class="form-group col">

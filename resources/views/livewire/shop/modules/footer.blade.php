@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row navigation nav nav-tabs" role="tablist">
             <div class="col">
-                <a wire:ignore.self href="{{ route('shop-main') }}" class="footer-btn active" aria-controls="home" role="tab" data-toggle="tab">
+                <a wire:ignore.self href="{{ route('shop-main') }}" class="footer-btn @if(Route::is('shop-main')) active @endif" aria-controls="home" role="tab" data-toggle="tab">
                     <i class="far fa-home"></i>
                     <span class="hidden sm:inline-block">Home</span>
                 </a>
