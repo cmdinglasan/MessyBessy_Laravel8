@@ -3,8 +3,7 @@
 @section('content')
 <div class="transaction-content">
 
-    @livewire('transaction')
-    {{-- @livewire('shop.modules.product-modal') --}}
+    @livewire('transactions.header')
     @livewireScripts
 </div>
 @endsection

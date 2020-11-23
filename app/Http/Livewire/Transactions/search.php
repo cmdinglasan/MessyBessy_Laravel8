@@ -21,7 +21,7 @@ class Search extends Component
     {
         $query = $this->query;
         $this->categories= ProductCategory::all();
-        return view('livewire.transactions.search',[
+        return view('livewire.transaction',[
             'products' => Product::where('name','like', '%'.$query.'%')->paginate(10)
             //'products' => Product::where('product_category_id', 'like', '%'.$categories.'%')->paginate(10)
 

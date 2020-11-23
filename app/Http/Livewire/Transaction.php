@@ -39,7 +39,7 @@ class Transaction extends Component
       //  $this->categories= ProductCategory::all();
 
         return view('livewire.transaction',[
-            'products' => Product::where('name','like', '%'.$query.'%'),
+            'products' => Product::where('name','like', '%'.$query.'%')->paginate(10)
            // 'products' => Product::where('product_category_id', 'like', '%'.$categories.'%')
 
         ]);

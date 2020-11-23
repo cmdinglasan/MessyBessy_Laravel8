@@ -9,6 +9,7 @@
 					<input type="text" wire:model="query" placeholder="Search here..." style="width: 100%;"/>
 				</div>
 			</div>
+			
 			<a href="{{ route('shop-cart') }}" class="w-14 mr-3">
 				<div class="nav-link bg-gray-100 rounded-2xl cart-btn">
 					<i class="fas fa-shopping-cart"></i>
@@ -23,12 +24,17 @@
 				</div>
 			</a>
 		</div>
+
 	</div>
 </div>
 <div class="shop-slideshow">
 	<div class="container">
 		<div class="slideshow-img">
 			<img src="{{ asset('storage/img/slideshow/slideshow_1.png') }}"/>
+		</div>
+		<div class="container">
+			@livewire('transaction')
+			@livewireScripts
 		</div>
 	</div>
 </div>
